@@ -14,7 +14,8 @@
     "build:client": "cd client && npm run build",
     "build:server": "cd server && npm run build",
     "build": "npm run build:client && npm run build:server",
-    "deploy": "npm run install && npm run build && npm run client:deploy & npm run server:deploy"
+    "install:build": "npm run install && npm run build",
+    "deploy": "npm run install:build && npm run client:deploy & npm run server:deploy"
   },
   "repository": {
     "type": "git",
