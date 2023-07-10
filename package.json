@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "client:deploy": "cd client && npm run start",
-    "server:deploy": "cd server && npm run start",
+    "start:client": "cd ./client && npm run start",
+    "start:server": "cd ./server && npm run start",
+    "client:deploy": "cd client && npm run deploy",
+    "server:deploy": "cd server && npm run deploy",
     "install:client": "cd client && npm i",
     "install:server": "cd server && npm i",
     "install": "npm run install:server && npm run install:client",
-    "deploy": "npm run install && npm run client:deploy & npm run server:deploy"
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "build": "npm run build:client && npm run build:server",
+    "deploy": "npm run install && npm run build && npm run client:deploy & npm run server:deploy"
   },
   "repository": {
     "type": "git",
