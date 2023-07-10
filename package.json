@@ -1,0 +1,25 @@
+{
+  "name": "safelogins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client:deploy": "cd client && npm run start",
+    "server:deploy": "cd server && npm run start",
+    "install:client": "cd client && npm i",
+    "install:server": "cd server && npm i",
+    "install": "npm run install:server && npm run install:client",
+    "deploy": "npm run install && npm run client:deploy & npm run server:deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewaclark248/SafeLogins.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewaclark248/SafeLogins/issues"
+  },
+  "homepage": "https://github.com/andrewaclark248/SafeLogins#readme"
+}
