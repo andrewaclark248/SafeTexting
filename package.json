@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/andrewaclark248/SafeLogins/issues"
   },
-  "homepage": "https://github.com/andrewaclark248/SafeLogins#readme"
+  "homepage": "https://github.com/andrewaclark248/SafeLogins#readme",
+  "dependencies": {
+    "typescript": "^5.1.6"
+  }
 }
