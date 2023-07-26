@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start2": "concurrently \"npm run start:client\" \"npm run start:server\"",
+    "start": "npm run start:client && npm run start:server",
     "start:client": "cd ./client && npm run start",
     "start:server": "cd ./server && npm run start",
     "client:deploy": "cd client && npm run deploy",
@@ -28,6 +30,7 @@
   },
   "homepage": "https://github.com/andrewaclark248/SafeLogins#readme",
   "dependencies": {
+    "concurrently": "^8.2.0",
     "typescript": "^5.1.6"
   }
 }
