@@ -5,7 +5,7 @@ import { Grid } from '@mui/material'
 import LoginForm from './components/login/LoginForm'
 import { createTheme, ThemeProvider, styled } from '@mui/material';
 import safeLoginsLogo from "./assets/safe-logins-logo.png"
-
+import safeTextingLogo from "./assets/safe-texting-logo.png"
 const theme = createTheme({
   palette: {
     mode: 'light',
@@ -28,16 +28,14 @@ function App() {
 
         <Grid container spacing={0} sx={{ mt: 10 }} >
           <Grid item xs={1}>
-            xs=8
           </Grid>
           <Grid item xs={5}>
-            <img src={safeLoginsLogo} style={{ width: "100%", height: "auto" }}/>
+            <img src={safeTextingLogo} style={{ width: "100%", height: "100%" }}/>
           </Grid>
           <Grid item xs={5}>
             <LoginForm />
           </Grid>
           <Grid item xs={1}>
-            xs=4
           </Grid>
 
         </Grid>

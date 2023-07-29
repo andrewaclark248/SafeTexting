@@ -11,7 +11,7 @@ import { Card,
 
 function LoginForm() {
     return (
-      <Card sx={{  }}>
+      <Card sx={{ borderRadius: 0, height: "100%" }} >
 
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" align="center">
