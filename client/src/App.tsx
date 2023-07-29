@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-//import { Grid } from '@mui/material'
-//import LoginForm from './components/login/LoginForm'
-//import { createTheme, ThemeProvider, styled } from '@mui/material';
-//import safeLoginsLogo from "./assets/safe-logins-logo.png"
-//import safeTextingLogo from "./assets/safe-texting-logo.png"
+import { Grid } from '@mui/material'
+import LoginForm from './components/login/LoginForm'
+import { createTheme, ThemeProvider, styled } from '@mui/material';
+import safeLoginsLogo from "./assets/safe-logins-logo.png"
+import safeTextingLogo from "./assets/safe-texting-logo.png"
 
 /***const theme = createTheme({
   palette: {
