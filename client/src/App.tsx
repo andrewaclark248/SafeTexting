@@ -4,7 +4,6 @@ import './App.css';
 import { Grid } from '@mui/material'
 import LoginForm from './components/login/LoginForm'
 import { createTheme, ThemeProvider, styled } from '@mui/material';
-import safeLoginsLogo from "./assets/safe-logins-logo.png"
 import safeTextingLogo from "./assets/safe-texting-logo.png"
 
 const theme = createTheme({
@@ -27,7 +26,18 @@ function App() {
 
       <div >
 
+        <Grid container spacing={0} sx={{ mt: 10 }} >
+          <Grid item xs={1}>
+          </Grid>
+          <Grid item xs={5}>
+            <img src={safeTextingLogo} style={{ width: "100%", height: "100%" }}/>
+          </Grid>
+          <Grid item xs={5}>
+          </Grid>
+          <Grid item xs={1}>
+          </Grid>
 
+        </Grid>
 
       </div>
 
