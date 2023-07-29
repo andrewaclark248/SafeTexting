@@ -33,6 +33,7 @@ function App() {
             <img src={safeTextingLogo} style={{ width: "100%", height: "100%" }}/>
           </Grid>
           <Grid item xs={5}>
+            <LoginForm />
           </Grid>
           <Grid item xs={1}>
           </Grid>
