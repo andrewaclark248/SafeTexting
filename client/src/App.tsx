@@ -1,9 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Grid } from '@mui/material'
+//import React from 'react';
+import Grid from '@mui/material/Grid'
 import LoginForm from './components/login/LoginForm'
-import { createTheme, ThemeProvider, styled } from '@mui/material';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import safeTextingLogo from "./assets/safe-texting-logo.png"
 
 const theme = createTheme({
