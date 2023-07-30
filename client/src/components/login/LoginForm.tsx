@@ -18,7 +18,6 @@ function LoginForm() {
 
           <Grid container spacing={0} sx={{ mt: 5 }} >
             <Grid item xs={12}>
-              <TextField label={'Username'} id="margin-dense" margin="dense" fullWidth/>
             </Grid>
           </Grid>
 
