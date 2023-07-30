@@ -4,18 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:client": "cd ./client && npm run start",
-    "start:server": "cd ./server && npm run start",
-    "client:deploy": "cd client && npm run deploy",
-    "server:deploy": "cd server && npm run deploy",
-    "install:client": "cd client && npm i",
-    "install:server": "cd server && npm i",
-    "install": "npm run install:server && npm run install:client",
-    "build:client": "cd client && npm run build",
-    "build:server": "cd server && npm run build",
-    "build": "npm run build:client && npm run build:server",
+    "start": "cd client && npm run start",
+    "install": "cd client && npm i",
+    "build": "cd client && npm run build",
     "install:build": "npm run install && npm run build",
-    "deploy": "npm run install:build && npm run client:deploy & npm run server:deploy"
+    "deploy": "npm run install:build && cd client && npm run deploy"
   },
   "repository": {
     "type": "git",
@@ -28,6 +21,7 @@
   },
   "homepage": "https://github.com/andrewaclark248/SafeLogins#readme",
   "dependencies": {
+    "concurrently": "^8.2.0",
     "typescript": "^5.1.6"
   }
 }
