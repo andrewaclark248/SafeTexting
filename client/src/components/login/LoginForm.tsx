@@ -23,6 +23,15 @@ function LoginForm() {
             <Grid item xs={12}>
               <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
             </Grid>
+            <Grid item xs={12}>
+              <Button variant="contained" fullWidth>Sign In</Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button variant="outlined" color="secondary" fullWidth>Sign In</Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button variant="outlined" color="secondary" fullWidth>Sign In</Button>
+            </Grid>
           </Grid>
 
         </CardContent>
