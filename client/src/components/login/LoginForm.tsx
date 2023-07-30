@@ -16,9 +16,8 @@ function LoginForm() {
             Login
           </Typography>
 
-          <Grid container spacing={0} sx={{ mt: 5 }} >
-            <Grid item xs={12}>
-            </Grid>
+          <Grid container >
+
           </Grid>
 
 
