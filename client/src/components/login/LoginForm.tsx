@@ -16,9 +16,6 @@ function LoginForm() {
             Login
           </Typography>
 
-          <Grid container >
-
-          </Grid>
 
 
 
