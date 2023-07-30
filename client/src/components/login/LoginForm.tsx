@@ -21,8 +21,6 @@ function LoginForm() {
             </Grid>
           </Grid>
 
-
-
         </CardContent>
       </Card>
     );
