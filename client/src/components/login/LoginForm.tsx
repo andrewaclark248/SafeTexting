@@ -1,12 +1,11 @@
-import { Card, 
-  CardContent, 
-  Typography, 
-  CardActions, 
-  Button,
-  TextField,
-  Grid,
-} from '@mui/material'
 
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
 
 
 function LoginForm() {
