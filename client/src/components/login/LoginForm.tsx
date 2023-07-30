@@ -18,6 +18,10 @@ function LoginForm() {
 
           <Grid container spacing={2}>
             <Grid item xs={12}>
+              <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
             </Grid>
           </Grid>
 
