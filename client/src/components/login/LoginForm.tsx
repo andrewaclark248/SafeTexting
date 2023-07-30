@@ -17,10 +17,12 @@ function LoginForm() {
           </Typography>
 
           <Grid container spacing={2}>
-            <Grid item xs={1}>
+            <Grid item xs={12}>
+              <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth />
             </Grid>
-            <Grid item xs={5}>
-              <img src={safeTextingLogo} style={{ width: "100%", height: "100%" }}/>
+
+            <Grid item xs={12}>
+              <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
             </Grid>
           </Grid>
 
