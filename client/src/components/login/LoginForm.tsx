@@ -6,8 +6,11 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import safeTextingLogo from './../../assets/safe-texting-logo.png'
+import env from "react-dotenv";
 
 function LoginForm() {
+
+  console.log("my env var = " + env.TEST_ENV_VAR)
     return (
       <Card sx={{ borderRadius: 0, height: "100%" }} >
 
@@ -24,7 +27,7 @@ function LoginForm() {
               <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" fullWidth>Sign In</Button>
+              <Button variant="contained" color="secondary" fullWidth>Sign In</Button>
             </Grid>
             <Grid item xs={6}>
               <Button variant="outlined" color="secondary" fullWidth>Sign In</Button>
