@@ -1,9 +1,10 @@
 //import React from 'react';
-import Grid from '@mui/material/Grid'
 import LoginForm from './components/login/LoginForm'
+import LoginLayout from './components/layouts/LoginLayout'
+import ResetPassword from './components/login/ResetPassword'
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import safeTextingLogo from "./assets/safe-texting-logo.png"
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Component } from 'react'
 const theme = createTheme({
   palette: {
     mode: 'light',
@@ -18,27 +19,20 @@ const theme = createTheme({
 });
 
 
-function App() {
+function App(props: any) {
   return (
+
     <ThemeProvider theme={theme}>
 
-      <div >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginLayout />} >
+            <Route index element={<LoginForm />} />
+            <Route path="reset-password" element={<ResetPassword />} />
 
-        <Grid container spacing={0} sx={{ mt: 10 }} >
-          <Grid item xs={1}>
-          </Grid>
-          <Grid item xs={5}>
-            <img src={safeTextingLogo} style={{ width: "100%", height: "100%" }}/>
-          </Grid>
-          <Grid item xs={5}>
-            <LoginForm />
-          </Grid>
-          <Grid item xs={1}>
-          </Grid>
-
-        </Grid>
-
-      </div>
+          </Route>
+        </Routes>
+      </BrowserRouter>
 
     </ThemeProvider>
   );

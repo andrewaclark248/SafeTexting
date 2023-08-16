@@ -10,7 +10,7 @@ window.env = {
   "npm_config_metrics_registry": "https://registry.npmjs.org/",
   "npm_config_global_prefix": "/Users/aclark/.nvm/versions/node/v19.3.0",
   "TERM_PROGRAM_VERSION": "3.4.4",
-  "TERM_SESSION_ID": "w0t1p0:8848696A-AC4E-46F6-BB28-59A5E84EA75C",
+  "TERM_SESSION_ID": "w0t0p0:FA96149F-0BDA-4171-8145-1253071DA0CD",
   "COLOR": "1",
   "npm_config_noproxy": "",
   "npm_config_local_prefix": "/Users/aclark/Github/SafeTexting/client",
@@ -18,7 +18,7 @@ window.env = {
   "USER": "aclark",
   "COMMAND_MODE": "unix2003",
   "npm_config_globalconfig": "/Users/aclark/.nvm/versions/node/v19.3.0/etc/npmrc",
-  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.uTyReQqeVj/Listeners",
+  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.IrTba0o5oT/Listeners",
   "__CF_USER_TEXT_ENCODING": "0x1F6:0x0:0x0",
   "npm_execpath": "/Users/aclark/.nvm/versions/node/v19.3.0/lib/node_modules/npm/bin/npm-cli.js",
   "PATH": "/Users/aclark/Github/SafeTexting/client/node_modules/.bin:/Users/aclark/Github/SafeTexting/node_modules/.bin:/Users/aclark/Github/node_modules/.bin:/Users/aclark/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/Users/aclark/.nvm/versions/node/v19.3.0/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/aclark/Github/SafeTexting/node_modules/.bin:/Users/aclark/Github/node_modules/.bin:/Users/aclark/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/Users/aclark/.nvm/versions/node/v19.3.0/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/aclark/.ebcli-virtual-env/executables:/Users/aclark/.ebcli-virtual-env/executables:/Library/Frameworks/Python.framework/Versions/3.11/bin:/Users/aclark/.nvm/versions/node/v19.3.0/bin:/usr/local/opt/v8@3.15/bin:/usr/local/opt/openssl@1.0/bin:/usr/local/opt/openssl@1.1/bin:/bin:/Users/aclark/.rbenv/shims:/usr/local/bin:/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Library/Apple/usr/bin:/usr/local/bin",
@@ -43,7 +43,7 @@ window.env = {
   "HOME": "/Users/aclark",
   "COLORFGBG": "7;0",
   "LC_TERMINAL_VERSION": "3.4.4",
-  "ITERM_SESSION_ID": "w0t1p0:8848696A-AC4E-46F6-BB28-59A5E84EA75C",
+  "ITERM_SESSION_ID": "w0t0p0:FA96149F-0BDA-4171-8145-1253071DA0CD",
   "LOGNAME": "aclark",
   "npm_config_cache": "/Users/aclark/.npm",
   "npm_lifecycle_script": "react-dotenv && react-scripts start",
@@ -53,5 +53,10 @@ window.env = {
   "COLORTERM": "truecolor",
   "npm_config_prefix": "/Users/aclark/.nvm/versions/node/v19.3.0",
   "npm_node_execpath": "/Users/aclark/.nvm/versions/node/v19.3.0/bin/node",
-  "TEST_ENV_VAR": "sometestenvvar"
+  "FIREBASE_API_KEY": "AIzaSyDJLmlqOtzoBWEslT82sFMgmnyb7Or1uy8",
+  "FIREBASE_AUTH_DOMAIN": "maskedtexting-staging.firebaseapp.com",
+  "FIREBASE_PROJECT_ID": "maskedtexting-staging",
+  "FIREBASE_STORAGE_BUCKET": "maskedtexting-staging.appspot.com",
+  "FIREBASE_MESSAGING_SENDER_ID": "1007088319970",
+  "FIREBASE_APP_ID": "G-SFBWE2CJZM"
 };

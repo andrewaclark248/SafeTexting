@@ -10,13 +10,17 @@ import env from "react-dotenv";
 import auth from "./../../config/firebase";
 import { useState } from 'react'
 import { loginUser } from './../../utilities/Authentication.js'
+import { registerUser } from './../../utilities/Authentication'
+import { Link } from "react-router-dom";
+import MuiLink from '@mui/material/Link';
+import CardActions from '@mui/material/CardActions';
+import './../../styles/styles.css'
 
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
 
-  console.log("my env var = " + env.TEST_ENV_VAR)
     return (
       <Card sx={{ borderRadius: 0, height: "100%" }} >
 
@@ -53,28 +57,30 @@ function LoginForm() {
                 variant="contained" 
                 color="secondary" 
                 fullWidth
-                onClick={() => {
-                  handleLogin(username, password);
+                onClick={(e) => {
+                  handleLogin(username, password, e);
                 }}
                 >Sign In</Button>
             </Grid>
-            <Grid item xs={6}>
-              <Button variant="outlined" color="secondary" fullWidth>Sign In</Button>
-            </Grid>
-            <Grid item xs={6}>
-              <Button variant="outlined" color="secondary" fullWidth>Sign In</Button>
+            <Grid item xs={12}>
+              <Link to="reset-password">
+
+                <MuiLink underline="hover">
+                  Forget Your Password?
+                </MuiLink>
+
+              </Link>
             </Grid>
           </Grid>
-
         </CardContent>
       </Card>
     );
   }
   
 
-function handleLogin(username: string, password: string) {
-
-  console.log("login user")
+function handleLogin(username: string, password: string, event: any) {
+  //event.preventDefault();
+  //registerUser(auth, username, password)
 
 }
 
