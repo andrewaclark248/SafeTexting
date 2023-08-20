@@ -7,10 +7,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import safeTextingLogo from './../../assets/safe-texting-logo.png'
 import env from "react-dotenv";
-import auth from "./../../config/firebase";
 import { useState } from 'react'
-import { loginUser } from './../../utilities/Authentication.js'
-import { registerUser } from './../../utilities/Authentication'
 import { Link } from "react-router-dom";
 import MuiLink from '@mui/material/Link';
 import CardActions from '@mui/material/CardActions';
@@ -64,12 +61,15 @@ function LoginForm() {
             </Grid>
             <Grid item xs={12}>
               <Link to="reset-password">
-
-                <MuiLink underline="hover">
                   Forget Your Password?
-                </MuiLink>
-
               </Link>
+            </Grid>
+            <Grid item xs={12}>
+
+              <Link to="create-account">
+                  Create Your Account
+              </Link>
+
             </Grid>
           </Grid>
         </CardContent>
@@ -79,7 +79,7 @@ function LoginForm() {
   
 
 function handleLogin(username: string, password: string, event: any) {
-  //event.preventDefault();
+  event.preventDefault();
   //registerUser(auth, username, password)
 
 }
