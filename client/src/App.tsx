@@ -6,6 +6,9 @@ import RegisterUser from './components/login/RegisterUser';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Component } from 'react'
+import { Provider } from 'react-redux';
+import store from './redux/store'
+
 const theme = createTheme({
   palette: {
     mode: 'light',
@@ -22,21 +25,23 @@ const theme = createTheme({
 
 function App(props: any) {
   return (
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
 
-    <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginLayout />} >
+              <Route index element={<LoginForm />} />
+              <Route path="reset-password" element={<ResetPassword />} />
+              <Route path="create-account" element={<RegisterUser />} />
 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LoginLayout />} >
-            <Route index element={<LoginForm />} />
-            <Route path="reset-password" element={<ResetPassword />} />
-            <Route path="create-account" element={<RegisterUser />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
 
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
 
-    </ThemeProvider>
   );
 }
 

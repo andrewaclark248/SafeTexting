@@ -12,10 +12,22 @@ import { Link } from "react-router-dom";
 import MuiLink from '@mui/material/Link';
 import CardActions from '@mui/material/CardActions';
 import './../../styles/styles.css'
+import { loginUser } from './../../redux/reducers/AuthUser';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 
 function LoginForm() {
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const auth = useSelector((state: any) => state.auth);
+  console.log("auth", auth)
+
+  const handleLogin = () => {
+    dispatch(loginUser({user: "new-user-1", token: "some-token"}));
+
+  }
 
 
     return (
@@ -55,9 +67,11 @@ function LoginForm() {
                 color="secondary" 
                 fullWidth
                 onClick={(e) => {
-                  handleLogin(username, password, e);
-                }}
-                >Sign In</Button>
+                  e.preventDefault();
+                  handleLogin();
+              }}>
+                Sign In
+              </Button>
             </Grid>
             <Grid item xs={12}>
               <Link to="reset-password">
@@ -69,6 +83,15 @@ function LoginForm() {
               <Link to="create-account">
                   Create Your Account
               </Link>
+            
+            </Grid>
+            <Grid item xs={12}>
+
+              <Link 
+                to="create-account" 
+              >
+                  Test Link
+              </Link>
 
             </Grid>
           </Grid>
@@ -77,12 +100,6 @@ function LoginForm() {
     );
   }
   
-
-function handleLogin(username: string, password: string, event: any) {
-  event.preventDefault();
-  //registerUser(auth, username, password)
-
-}
 
 
 
