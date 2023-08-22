@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Component } from 'react'
 import { Provider } from 'react-redux';
 import store from './redux/store'
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
 const theme = createTheme({
   palette: {
@@ -24,22 +26,27 @@ const theme = createTheme({
 
 
 function App(props: any) {
+
+  let persistor = persistStore(store);
+
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
 
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LoginLayout />} >
-              <Route index element={<LoginForm />} />
-              <Route path="reset-password" element={<ResetPassword />} />
-              <Route path="create-account" element={<RegisterUser />} />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LoginLayout />} >
+                <Route index element={<LoginForm />} />
+                <Route path="reset-password" element={<ResetPassword />} />
+                <Route path="create-account" element={<RegisterUser />} />
 
-            </Route>
-          </Routes>
-        </BrowserRouter>
+              </Route>
+            </Routes>
+          </BrowserRouter>
 
-      </ThemeProvider>
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
 
   );
