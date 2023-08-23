@@ -38,6 +38,7 @@ function App(props: any) {
           <Routes>
             <Route path="/" element={<LoginLayout />} >
               <Route index element={<LoginForm />} />
+              <Route path="create-account" element={<RegisterUser />} />
 
             </Route>
           </Routes>
