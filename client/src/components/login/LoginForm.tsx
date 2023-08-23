@@ -5,12 +5,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import safeTextingLogo from './../../assets/safe-texting-logo.png'
-import env from "react-dotenv";
 import { useState } from 'react'
 import { Link } from "react-router-dom";
-import MuiLink from '@mui/material/Link';
-import CardActions from '@mui/material/CardActions';
 import './../../styles/styles.css'
 import { loginUser } from './../../redux/reducers/AuthUser';
 import { useDispatch } from 'react-redux';

@@ -34,16 +34,7 @@ function App(props: any) {
       
       <ThemeProvider theme={theme}>
 
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LoginLayout />} >
-              <Route index element={<LoginForm />} />
-              <Route path="reset-password" element={<ResetPassword />} />
-              <Route path="create-account" element={<RegisterUser />} />
-
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <div>some sample text</div>
 
       </ThemeProvider>
     </Provider>
