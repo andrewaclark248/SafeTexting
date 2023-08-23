@@ -7,6 +7,8 @@ import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 
+/*******
+
 const reducers = combineReducers({
     auth: authReducer
 });
@@ -20,10 +22,14 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 
 
 const store = configureStore({
-    reducer: persistedReducer,
-    //devTools: process.env.NODE_ENV !== 'production',
-    middleware: [thunk],
-});
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+  middleware: [thunk],
+}); */
 
-export default store;
+export default configureStore({
+  reducer: {
+    auth: authReducer,
+  },
+});
 

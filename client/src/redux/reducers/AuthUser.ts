@@ -11,6 +11,7 @@ export const authSlice = createSlice({
         user: action.payload.user,
         token: action.payload.token,
         };
+      localStorage.setItem("userInfo", JSON.stringify(login));
 
       console.log("login =", login)
       return login;

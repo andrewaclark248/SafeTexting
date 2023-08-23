@@ -26,27 +26,28 @@ const theme = createTheme({
 
 
 function App(props: any) {
+  const cat = localStorage.getItem("userInfo");
+  console.log("cat", cat)
 
-  let persistor = persistStore(store);
+  //let persistor = persistStore(store);
 
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={theme}>
+      
+      <ThemeProvider theme={theme}>
 
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<LoginLayout />} >
-                <Route index element={<LoginForm />} />
-                <Route path="reset-password" element={<ResetPassword />} />
-                <Route path="create-account" element={<RegisterUser />} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginLayout />} >
+              <Route index element={<LoginForm />} />
+              <Route path="reset-password" element={<ResetPassword />} />
+              <Route path="create-account" element={<RegisterUser />} />
 
-              </Route>
-            </Routes>
-          </BrowserRouter>
+            </Route>
+          </Routes>
+        </BrowserRouter>
 
-        </ThemeProvider>
-      </PersistGate>
+      </ThemeProvider>
     </Provider>
 
   );
