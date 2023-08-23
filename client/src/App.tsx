@@ -39,8 +39,6 @@ function App(props: any) {
             <Route path="/" element={<LoginLayout />} >
               <Route index element={<LoginForm />} />
               <Route path="create-account" element={<RegisterUser />} />
-              <Route path="reset-password" element={<ResetPassword />} />
-
             </Route>
           </Routes>
         </BrowserRouter>
