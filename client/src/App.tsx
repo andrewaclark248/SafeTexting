@@ -34,8 +34,14 @@ function App(props: any) {
       
       <ThemeProvider theme={theme}>
 
-        <div>some sample text</div>
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginLayout />} >
 
+
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </ThemeProvider>
     </Provider>
 
