@@ -1,8 +1,13 @@
 //import React from 'react';
-import Grid from '@mui/material/Grid'
 import LoginForm from './components/login/LoginForm'
+import LoginLayout from './components/layouts/LoginLayout'
+import ResetPassword from './components/login/ResetPassword'
+import RegisterUser from './components/login/RegisterUser';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import safeTextingLogo from "./assets/safe-texting-logo.png"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Component } from 'react'
+import { Provider } from 'react-redux';
+import store from './redux/store'
 
 const theme = createTheme({
   palette: {
@@ -18,29 +23,28 @@ const theme = createTheme({
 });
 
 
-function App() {
+function App(props: any) {
+  const cat = localStorage.getItem("userInfo");
+  console.log("cat", cat)
+
+  //let persistor = persistStore(store);
+
   return (
-    <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      
+      <ThemeProvider theme={theme}>
 
-      <div >
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginLayout />} >
+              <Route index element={<LoginForm />} />
+              <Route path="create-account" element={<RegisterUser />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
 
-        <Grid container spacing={0} sx={{ mt: 10 }} >
-          <Grid item xs={1}>
-          </Grid>
-          <Grid item xs={5}>
-            <img src={safeTextingLogo} style={{ width: "100%", height: "100%" }}/>
-          </Grid>
-          <Grid item xs={5}>
-            <LoginForm />
-          </Grid>
-          <Grid item xs={1}>
-          </Grid>
-
-        </Grid>
-
-      </div>
-
-    </ThemeProvider>
   );
 }
 
