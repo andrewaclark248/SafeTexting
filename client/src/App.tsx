@@ -37,7 +37,7 @@ function App(props: any) {
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginLayout />} >
-
+              <Route index element={<LoginForm />} />
 
             </Route>
           </Routes>
