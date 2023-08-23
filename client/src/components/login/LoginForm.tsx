@@ -15,17 +15,38 @@ import './../../styles/styles.css'
 import { loginUser } from './../../redux/reducers/AuthUser';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import auth from "./../../config/firebase2";
 
 
 function LoginForm() {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const auth = useSelector((state: any) => state.auth);
-  console.log("auth", auth)
+  const authObject = useSelector((state: any) => state.auth);
+  //const authentication = getAuth();
 
-  const handleLogin = () => {
-    dispatch(loginUser({user: "new-user-1", token: "some-token"}));
+  console.log("auth", authObject)
+
+  const  handleLogin = async() => {
+    try {
+      console.log("username = ", username)
+      console.log("password = ", password)
+      let result = await signInWithEmailAndPassword(auth, username, password);
+      let token = await result.user.getIdToken();
+      console.log("email", token)
+      let user = {
+        username: username,
+        token: token
+      }
+
+      //console.log("result", result)
+
+      dispatch(loginUser(user));
+
+    } catch (err){
+        console.error(err);
+    }
 
   }
 

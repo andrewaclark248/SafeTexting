@@ -8,13 +8,13 @@ export const authSlice = createSlice({
     //action name
     loginUser: (state, action) => {
       const login = {
-        user: action.payload.user,
-        token: action.payload.token,
+        user: null,
+        token: action.payload?.accessToken,
+        email: action.payload?.email
         };
-      localStorage.setItem("userInfo", JSON.stringify(login));
-
-      console.log("login =", login)
-      return login;
+      localStorage.setItem("userInfo", JSON.stringify(action.payload));
+      state = action.payload;
+      //return login;
 
     }
   },
