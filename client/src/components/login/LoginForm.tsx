@@ -16,7 +16,7 @@ import { loginUser } from './../../redux/reducers/AuthUser';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import auth from "./../../config/firebase2";
+import auth from "./../../config/firebase";
 
 
 function LoginForm() {

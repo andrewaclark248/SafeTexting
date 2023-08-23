@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { useState } from 'react'
 //import { registerUser } from './../../utilities/Authentication'
-import auth from "./../../config/firebase2";
+import auth from "./../../config/firebase";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 
 function RegisterUser() {

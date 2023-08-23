@@ -3,7 +3,7 @@ import {
     signInWithEmailAndPassword,
   } from "firebase/auth";
 
-import auth from "./../config/firebase2";
+import auth from "./../config/firebase";
 
 
 
