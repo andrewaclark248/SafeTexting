@@ -11,7 +11,7 @@ import './../../styles/styles.css'
 import { loginUser } from './../../redux/reducers/AuthUser';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "./../../config/firebase";
 
 
