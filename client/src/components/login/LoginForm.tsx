@@ -5,8 +5,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import { useState } from 'react'
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from "react-router-dom";
 import './../../styles/styles.css'
 import { loginUser } from './../../redux/reducers/AuthUser';
 import { useDispatch } from 'react-redux';
@@ -16,32 +16,30 @@ import auth from "./../../config/firebase";
 
 
 function LoginForm() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const authObject = useSelector((state: any) => state.auth);
   //const authentication = getAuth();
 
-  console.log("auth", authObject)
+  console.log("currentUser", auth.currentUser);
+
+
 
   const  handleLogin = async() => {
     try {
       console.log("username = ", username)
       console.log("password = ", password)
       let result = await signInWithEmailAndPassword(auth, username, password);
-      let token = await result.user.getIdToken();
-      console.log("email", token)
-      let user = {
-        username: username,
-        token: token
-      }
 
-      //console.log("result", result)
+      navigate("/home");
 
-      dispatch(loginUser(user));
+      //dispatch(loginUser(user));
 
     } catch (err){
-        console.error(err);
+      alert("login failed")
+      console.error(err);
     }
 
   }
