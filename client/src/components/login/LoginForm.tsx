@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { useState, useEffect } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import './../../styles/styles.css'
 import { loginUser } from './../../redux/reducers/AuthUser';
 import { useDispatch } from 'react-redux';
@@ -23,15 +23,14 @@ function LoginForm() {
   const authObject = useSelector((state: any) => state.auth);
   //const authentication = getAuth();
 
-  console.log("currentUser", auth.currentUser);
 
 
 
   const  handleLogin = async() => {
     try {
-      console.log("username = ", username)
-      console.log("password = ", password)
       let result = await signInWithEmailAndPassword(auth, username, password);
+      //let token = await result.user.getIdToken();
+      //localStorage.setItem("safeTextingToken", token);
 
       navigate("/home");
 

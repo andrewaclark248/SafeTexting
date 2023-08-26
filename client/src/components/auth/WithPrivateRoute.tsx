@@ -9,12 +9,12 @@ interface Props {
 const WithPrivateRoute = ({ children }: Props) => {
   console.log("render prive route", auth.currentUser)
 
-  if (auth.currentUser) {
+  if (!auth.currentUser) {
+    return <Navigate to="/" replace />;
 
-    return <>{children}</>;
   }
+  return <>{children}</>;
 
-  return <Navigate to="/" />;
 };
 
 export default WithPrivateRoute;
