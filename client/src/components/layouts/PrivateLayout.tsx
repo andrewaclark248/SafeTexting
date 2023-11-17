@@ -7,6 +7,8 @@ import auth from "../../config/firebase";
 import { Navigate, useNavigate } from "react-router-dom";
 import { User } from "firebase/auth"
 import {useEffect} from 'react'
+import NavBar from './NavBar'
+import SideNav from './SideNav'
 
 interface Props {
   children?: React.ReactNode
@@ -21,15 +23,10 @@ const PrivateLayout: React.FC<Props> = ({children, currentUser}: Props) => {
     }
 
     return (
-            <div >
+            <div className="somename">
+                <SideNav />
 
-                <Grid container spacing={0} sx={{ mt: 10 }} >
-                    <div>
-                        Some random text
-                    </div>
-                    <Outlet/>
 
-                </Grid>
 
             </div>
 
