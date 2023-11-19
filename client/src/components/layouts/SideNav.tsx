@@ -16,11 +16,17 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-
+import Person2Icon from '@mui/icons-material/Person2';
+import MessageIcon from '@mui/icons-material/Message';
 import MailIcon from '@mui/icons-material/Mail';
+import GroupsIcon from '@mui/icons-material/Groups';
+import LoopIcon from '@mui/icons-material/Loop';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+
+import { Link, useNavigate, Navigate } from "react-router-dom";
+
+
 import { Outlet } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 
@@ -108,6 +114,9 @@ export default function SideNav() {
     setOpen(false);
   };
 
+  const navigate = useNavigate();
+
+
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar position="fixed" open={open} sx={{backgroundColor: "#1976d2"}}>
@@ -138,11 +147,12 @@ export default function SideNav() {
         >
         <DrawerHeader >
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? <ChevronRightIcon sx={{fill: "white"}} /> : <ChevronLeftIcon sx={{fill: "white"}} />}
           </IconButton>
         </DrawerHeader>
         <List >
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['MessageIcon', 'MailIcon', 'GroupsIcon', 'LoopIcon'].map((text, index) => (
+            <Link to="/profile" key={index}> 
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -150,6 +160,8 @@ export default function SideNav() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                //href={`#${GetRoute(text)}`}
+                //navigate("/home");
               >
                 <ListItemIcon
                   sx={{
@@ -158,15 +170,19 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                  <InboxIcon sx={{color: "white" }}/> 
+                  {GetIcon(text)}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color: "white" }} />
               </ListItemButton>
             </ListItem>
+            </Link>
+
           ))}
         </List>
-        <List >
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        <Divider  sx={{background: "white" }} />
+        <List>
+          {['Person2Icon', 'ContactSupportIcon'].map((text, index) => (
+            <Link to="/profile" key={index}> 
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -182,26 +198,63 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                 <DeleteIcon sx={{backgroundColor: "#f5f5f5"}} />
+                  {GetIcon(text)}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color: "white" }} />
               </ListItemButton>
             </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-
-            <Grid container spacing={0} sx={{ mt: 10 }} >
-                    <div>
-                        Some random text
-                    </div>
-                    <Outlet/>
-
-                </Grid>
+        <Grid container spacing={0} sx={{ mt: 10 }} >
+          <Outlet/>
+        </Grid>
         <DrawerHeader />
-
       </Box>
     </Box>
   );
+}
+
+function GetIcon(text: string) {
+  let component = null;
+  if (text == "Person2Icon") {
+    component = <Person2Icon sx={{color: "white" }} />
+  } else if (text == "MessageIcon" ) {
+    component = <MessageIcon sx={{color: "white" }} />
+  } else if (text == "MailIcon") {
+    component = <MailIcon sx={{color: "white" }} />
+  } else if (text == "GroupsIcon") {
+    component = <GroupsIcon sx={{color: "white" }} />
+  } else if (text == "LoopIcon") {
+    component = <LoopIcon sx={{color: "white" }} />
+  } else if (text == "ContactSupportIcon") {
+    component = <ContactSupportIcon sx={{color: "white" }} />
+
+  }
+  return component;
+}
+
+function GetRoute(text: string) {
+  let route = null;
+  if (text == "Person2Icon") {
+    route = "profile"
+  } else if (text == "MessageIcon" ) {
+    route = "messages"
+  } else if (text == "MailIcon") {
+    route = "mail"
+  } else if (text == "GroupsIcon") {
+    route = "groups"
+  } else if (text == "LoopIcon") {
+    route = "recurring-messages"
+  } else if (text == "ContactSupportIcon") {
+    route = "support"
+  }
+  return route;
+}
+
+function handleNavigate() {
+  console.log("top suggestion clicked")
+
 }

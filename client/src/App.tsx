@@ -5,8 +5,9 @@ import PrivateLayout from './components/layouts/PrivateLayout'
 import ResetPassword from './components/login/ResetPassword'
 import RegisterUser from './components/login/RegisterUser';
 import Loading from './components/shared/Loading'
-
+import Profile from './components/profile/Profile'
 import Home from './components/account/Home';
+
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from 'react'
@@ -72,6 +73,12 @@ function App(props: any) {
                         <Home />
                     } />
                   </Route>
+                  <Route path="/profile" element={<PrivateLayout currentUser={currentUser} />} >
+                    <Route index element={
+                        <Profile />
+                    } />
+                  </Route>
+
 
                 </Routes>
             </BrowserRouter>

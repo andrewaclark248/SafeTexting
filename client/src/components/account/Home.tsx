@@ -6,7 +6,7 @@ function Home(props: any) {
   
     return (
         <div>
-            some random profile text
+            Home Page baby
         </div>
   
     );
