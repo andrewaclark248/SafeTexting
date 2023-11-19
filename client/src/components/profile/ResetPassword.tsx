@@ -15,8 +15,7 @@ function ResetPassword() {
 
     return (
         <Card variant="outlined" >
-
-              <CardContent>
+            <CardContent>
 
                 <Typography sx={{ fontSize: 18, fontWeight: "bold" }} color="text.primary" gutterBottom>
                     Account
@@ -57,7 +56,6 @@ function ResetPassword() {
                         <Button variant="contained">Change Name</Button>
                     </Grid>
                 </Grid>
-
                 </CardContent>
                 <CardActions>
             </CardActions>  

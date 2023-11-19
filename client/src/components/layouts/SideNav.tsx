@@ -24,6 +24,11 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import LoopIcon from '@mui/icons-material/Loop';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 
+import Button from '@mui/material/Button';
+
+
+import { logoutUser } from './../../utilities/Authentication'
+
 import { Link, useNavigate, Navigate } from "react-router-dom";
 
 
@@ -122,22 +127,29 @@ export default function SideNav() {
       <AppBar position="fixed" open={open} sx={{backgroundColor: "#1976d2"}}>
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
-          >
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: 'none' }),
+              }}
+            >
             <MenuIcon />
           </IconButton>
-          <Link  to="/home" style={{textDecoration: "none", color: "black"}}>
-          <Typography variant="h6" noWrap component="div">
-            Safe Texting
-          </Typography>
-          </Link>
+          <Grid container spacing={0}>
+            <Grid item xs={11}>
+              <Link  to="/home" style={{textDecoration: "none", color: "black"}}>
+                  <Typography variant="h6" noWrap component="div">
+                    Safe Texting
+                  </Typography>
+              </Link>
+            </Grid>
+            <Grid item xs={1}>
+                <Button variant="contained" onClick={()=> { logoutUser();}}>Logout</Button>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}  
