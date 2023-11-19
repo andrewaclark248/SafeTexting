@@ -133,9 +133,11 @@ export default function SideNav() {
           >
             <MenuIcon />
           </IconButton>
+          <Link  to="/home" style={{textDecoration: "none", color: "black"}}>
           <Typography variant="h6" noWrap component="div">
             Safe Texting
           </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}  
