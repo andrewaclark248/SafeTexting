@@ -12,6 +12,8 @@ import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import {useState} from 'react'
 import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+
 
 function ResetPassword() {
 
@@ -93,12 +95,13 @@ function ResetPasswordModal() {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
+            <Typography id="modal-modal-title" variant="h6" component="h2" sx={{marginBottom: 5}}>
               Reset Password
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
+            <TextField fullWidth id="outlined-basic" label="New Password" variant="outlined" sx={{marginBottom: 2}} />
+            <TextField fullWidth id="outlined-basic" label="Confirm New Password" variant="outlined"  sx={{marginBottom: 2}} />
+            <Button variant="contained"  onClick={handleOpen}>Reset Password</Button>
+
           </Box>
         </Modal>
       </div>

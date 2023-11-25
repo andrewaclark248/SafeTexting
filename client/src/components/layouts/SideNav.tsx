@@ -147,7 +147,7 @@ export default function SideNav() {
               </Link>
             </Grid>
             <Grid item xs={1}>
-                <Button variant="contained" onClick={()=> { logoutUser();}}>Logout</Button>
+                <Button variant="contained" onClick={()=> { logoutUser();}} sx={{backgroundColor: "#e3f2fd", color: "#212121" }}>Logout</Button>
             </Grid>
           </Grid>
         </Toolbar>
