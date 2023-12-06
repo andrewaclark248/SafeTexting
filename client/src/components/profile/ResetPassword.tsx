@@ -10,9 +10,14 @@ import InfoIcon from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
-import {useState} from 'react'
+import {useState, MouseEvent} from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
+import Alert from '@mui/material/Alert'
+import auth from "./../../config/firebase";
+import { updatePassword } from "firebase/auth";
+import { User } from "firebase/auth";
+
 
 
 function ResetPassword() {
@@ -69,9 +74,13 @@ function ResetPassword() {
 
 function ResetPasswordModal() {
     const [open, setOpen] = useState(false);
+    const [password, setPassword] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
+    const [errorAlert, setErrorAlert] = useState<boolean>(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-  
+
+    
     const style = {
         position: 'absolute' as 'absolute',
         top: '50%',
@@ -85,6 +94,21 @@ function ResetPasswordModal() {
       };
 
 
+
+
+    const handleSubmit = async () => {
+        if (password != confirmPassword) {
+            setErrorAlert(true)
+        } else {
+            let user: User | null = auth.currentUser;
+            await updatePassword(auth.currentUser!, password)
+
+        }
+        console.log("submit button pressed")
+    }
+
+
+
     return (
       <div>
         <Button variant="contained"  onClick={handleOpen}>Reset Password</Button>
@@ -95,17 +119,41 @@ function ResetPasswordModal() {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
+            {errorAlert &&
+                <Alert severity="error" sx={{marginBottom: 3}}>Passwords much match!!</Alert>
+            }
+
             <Typography id="modal-modal-title" variant="h6" component="h2" sx={{marginBottom: 5}}>
               Reset Password
             </Typography>
-            <TextField fullWidth id="outlined-basic" label="New Password" variant="outlined" sx={{marginBottom: 2}} />
-            <TextField fullWidth id="outlined-basic" label="Confirm New Password" variant="outlined"  sx={{marginBottom: 2}} />
-            <Button variant="contained"  onClick={handleOpen}>Reset Password</Button>
+            <TextField 
+                fullWidth 
+                id="outlined-basic" 
+                label="New Password" 
+                variant="outlined" 
+                name="password"
+                sx={{marginBottom: 2}} 
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <TextField 
+                fullWidth 
+                id="outlined-basic"
+                label="Confirm New Password"
+                variant="outlined" 
+                name="confirmPassword"
+                sx={{marginBottom: 2}} 
+                onChange={(e) => setConfirmPassword(e.target.value)}
+
+            />
+
+            <Button variant="contained"  onClick={handleSubmit}>Reset Password</Button>
 
           </Box>
         </Modal>
       </div>
     );
   }
+
+
 
 export default ResetPassword;
