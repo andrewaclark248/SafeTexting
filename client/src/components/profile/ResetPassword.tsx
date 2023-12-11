@@ -65,9 +65,7 @@ function ResetPassword() {
                         <Button variant="contained">Change Name</Button>
                     </Grid>
                 </Grid>
-                </CardContent>
-                <CardActions>
-            </CardActions>  
+            </CardContent>
         </Card>
     );
 }

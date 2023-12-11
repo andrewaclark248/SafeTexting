@@ -7,6 +7,9 @@ import RegisterUser from './components/login/RegisterUser';
 import Loading from './components/shared/Loading'
 import Profile from './components/profile/Profile'
 import Home from './components/account/Home';
+import Groups from './components/groups/Groups';
+
+
 
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -70,14 +73,22 @@ function App(props: any) {
 
                   <Route path="/home" element={<PrivateLayout currentUser={currentUser} />} >
                     <Route index element={
-                        <Home />
-                    } />
-                  </Route>
-                  <Route path="/profile" element={<PrivateLayout currentUser={currentUser} />} >
-                    <Route index element={
-                        <Profile />
-                    } />
-                  </Route>
+                          <Home />
+                      } />
+                    </Route>
+                    <Route path="/profile" element={<PrivateLayout currentUser={currentUser} />} >
+                      <Route index element={
+                          <Profile />
+                      } />
+                     </Route>
+                     <Route path="/groups" element={<PrivateLayout currentUser={currentUser} />} >
+                      <Route index element={
+                          <Groups />
+                      } />
+                     </Route>
+                     
+
+                     
 
 
                 </Routes>

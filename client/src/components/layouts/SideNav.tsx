@@ -166,7 +166,7 @@ export default function SideNav() {
         </DrawerHeader>
         <List >
           {['MessageIcon', 'MailIcon', 'GroupsIcon', 'LoopIcon'].map((text, index) => (
-            <Link to="/profile" key={index}> 
+            <Link to={GetRoute(text)} key={index}> 
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -174,7 +174,6 @@ export default function SideNav() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
-                //href={`#${GetRoute(text)}`}
                 //navigate("/home");
               >
                 <ListItemIcon
@@ -245,25 +244,24 @@ function GetIcon(text: string) {
     component = <LoopIcon sx={{color: "white" }} />
   } else if (text == "ContactSupportIcon") {
     component = <ContactSupportIcon sx={{color: "white" }} />
-
   }
   return component;
 }
 
 function GetRoute(text: string) {
-  let route = null;
+  let route = '/home';
   if (text == "Person2Icon") {
-    route = "profile"
+    route = "/profile"
   } else if (text == "MessageIcon" ) {
-    route = "messages"
+    route = "/messages"
   } else if (text == "MailIcon") {
-    route = "mail"
+    route = "/mail"
   } else if (text == "GroupsIcon") {
-    route = "groups"
+    route = "/groups"
   } else if (text == "LoopIcon") {
-    route = "recurring-messages"
+    route = "/recurring-messages"
   } else if (text == "ContactSupportIcon") {
-    route = "support"
+    route = "/support"
   }
   return route;
 }
