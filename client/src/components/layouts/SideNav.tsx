@@ -29,7 +29,7 @@ import Button from '@mui/material/Button';
 
 import { logoutUser } from './../../utilities/Authentication'
 
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 import { Outlet } from 'react-router-dom'
@@ -118,8 +118,6 @@ export default function SideNav() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const navigate = useNavigate();
 
 
   return (

@@ -8,7 +8,7 @@ import Loading from './components/shared/Loading'
 import Profile from './components/profile/Profile'
 import Home from './components/account/Home';
 import Groups from './components/groups/Groups';
-
+import NewGroup from './components/groups/NewGroup'
 
 
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
@@ -50,7 +50,6 @@ function App(props: any) {
   });
 
 
-  console.log("currentUser ", currentUser)
   return (
     
       <React.Fragment>
@@ -75,17 +74,22 @@ function App(props: any) {
                     <Route index element={
                           <Home />
                       } />
-                    </Route>
-                    <Route path="/profile" element={<PrivateLayout currentUser={currentUser} />} >
-                      <Route index element={
-                          <Profile />
-                      } />
-                     </Route>
-                     <Route path="/groups" element={<PrivateLayout currentUser={currentUser} />} >
-                      <Route index element={
-                          <Groups />
-                      } />
-                     </Route>
+                  </Route>
+                  <Route path="/profile" element={<PrivateLayout currentUser={currentUser} />} >
+                    <Route index element={
+                        <Profile />
+                    } />
+                  </Route>
+                  <Route path="/groups" element={<PrivateLayout currentUser={currentUser} />} >
+                    <Route index element={
+                      <Groups />
+                    } />
+
+
+                    <Route path="new" element={<NewGroup />} />
+
+
+                  </Route>
                      
 
                      

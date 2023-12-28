@@ -14,6 +14,7 @@
     "@types/jest": "^27.5.2",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "axios": "^1.6.3",
     "firebase": "^10.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -41,7 +42,7 @@
     ]
   },
   "browserslist": {
-    "production": [
+    "production": [ 
       ">0.2%",
       "not dead",
       "not op_mini all"
@@ -54,5 +55,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.5.4"
+  },
+  "react-dotenv": {
+    "whitelist": ["FIREBASE_API_KEY"]
   }
 }
