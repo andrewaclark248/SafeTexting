@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import GroupForm from './GroupForm'
 
 
-function NewGroup() {
+function NewGroup(props: any) {
 
     return (
 
@@ -19,7 +19,7 @@ function NewGroup() {
             <Grid item xs={3}>
             </Grid>
             <Grid item xs={6}>
-                <GroupForm/>
+                <GroupForm {...props} />
             </Grid>
             <Grid item xs={3}>
             </Grid>

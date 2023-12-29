@@ -9,6 +9,7 @@ import Profile from './components/profile/Profile'
 import Home from './components/account/Home';
 import Groups from './components/groups/Groups';
 import NewGroup from './components/groups/NewGroup'
+import './api/axios'
 
 
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
@@ -38,6 +39,8 @@ const theme = createTheme({
 
 function App(props: any) {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | undefined>("");
+  
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -86,7 +89,7 @@ function App(props: any) {
                     } />
 
 
-                    <Route path="new" element={<NewGroup />} />
+                    <Route path="new" element={<NewGroup currentUser={currentUser} />} />
 
 
                   </Route>
