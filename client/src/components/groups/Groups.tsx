@@ -2,13 +2,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import AccessibleTable from './GroupTable'
-import GroupTable from './GroupTable'
+import GroupsTable from './GroupTable'
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
-function Groups() {
+function Groups(props: any) {
     //const handle = (number) => {
     //    return number * number;
     //};
@@ -30,7 +29,7 @@ function Groups() {
                 </Link>
             </Grid>
             <Grid item xs={12}>
-                <GroupTable/>
+                <GroupsTable {...props} />
             </Grid>
 
         </Grid>

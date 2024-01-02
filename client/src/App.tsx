@@ -85,7 +85,7 @@ function App(props: any) {
                   </Route>
                   <Route path="/groups" element={<PrivateLayout currentUser={currentUser} />} >
                     <Route index element={
-                      <Groups />
+                      <Groups currentUser={currentUser}  />
                     } />
 
 

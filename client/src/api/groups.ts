@@ -15,11 +15,31 @@ export async function CreateGroup(currentUser: User, name: string) {
                                     name: name
                                 },
                                 headers: {
-                                    Authorization: 'Bearer ' + token //the token is a variable which holds the token
+                                    Authorization: 'Bearer ' + token
                                 }
                             });
 
     return result
+
+
+} 
+
+
+
+
+export async function GetGroups(currentUser: User) {
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'get',
+                                url: '/api/groups',
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
 
 
 } 
