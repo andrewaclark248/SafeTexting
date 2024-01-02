@@ -3,21 +3,44 @@ import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import { GetGroups } from './../../api/groups'
+import Alert from '@mui/material/Alert';
+import { CreateGroup } from './../../api/groups'
 import { useState } from 'react'
+
+type Message = {
+    show: boolean | null
+    text: string | null
+    severity: any
+}
+
+const createGroupMessage: Message  = {
+    show: false,
+    text: null,
+    severity: "success"
+}
 
 function GroupForm(props: any) {
     let [name, setName] = useState("");
+    let [message, setMessage] = useState(createGroupMessage);
 
 
     const handleClick = async () => {
-        let result = await GetGroups(props.currentUser, name)
+        let result = await CreateGroup(props.currentUser, name)
+        let success = result.data.success
 
-        //console.log("result = ", result)
+        if (success) {
+            setMessage({show: true, text: "Successfully created your group!", severity: "success"})
+        } else {
+            setMessage({show: true, text: "Error creating group.", severity: "error"})
+        }
     }
 
     return (
-        
+        <>
+        {message.show &&
+            <Alert severity={message.severity}>{message.text}</Alert>
+        }
+
         <Card variant="outlined" sx={{ minWidth: 275 }}>
             <CardContent>
                 <Grid container spacing={2}>
@@ -39,6 +62,7 @@ function GroupForm(props: any) {
             
 
         </Card>
+        </>
     )
 }
 

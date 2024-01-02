@@ -4,7 +4,7 @@ import axios from 'axios';
 import { User } from "firebase/auth"
 
 
-export async function GetGroups(currentUser: User, name: string) {
+export async function CreateGroup(currentUser: User, name: string) {
 
     const token = await currentUser.getIdToken();
 
@@ -18,8 +18,6 @@ export async function GetGroups(currentUser: User, name: string) {
                                     Authorization: 'Bearer ' + token //the token is a variable which holds the token
                                 }
                             });
-
-    console.log("api result = ", result)
 
     return result
 
