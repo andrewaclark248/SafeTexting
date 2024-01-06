@@ -9,7 +9,7 @@ export async function CreateUser(currentUser: User, email: string) {
                                 method: 'post',
                                 url: '/api/users',
                                 data: {
-                                    name: email
+                                    email: email
                                 },
                                 headers: {
                                     Authorization: 'Bearer ' + token
