@@ -23,5 +23,8 @@
   "dependencies": {
     "concurrently": "^8.2.0",
     "typescript": "^5.1.6"
+  },
+  "react-dotenv": {
+    "whitelist": ["FIREBASE_API_KEY", "FIREBASE_AUTH_DOMAIN", "FIREBASE_PROJECT_ID", "FIREBASE_STORAGE_BUCKET", "FIREBASE_MESSAGING_SENDER_ID", "FIREBASE_APP_ID", "SAFE_TEXTING_API"]
   }
 }

@@ -7,6 +7,10 @@ import RegisterUser from './components/login/RegisterUser';
 import Loading from './components/shared/Loading'
 import Profile from './components/profile/Profile'
 import Home from './components/account/Home';
+import Groups from './components/groups/Groups';
+import NewGroup from './components/groups/NewGroup'
+import './api/axios'
+
 
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -35,6 +39,8 @@ const theme = createTheme({
 
 function App(props: any) {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | undefined>("");
+  
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -47,7 +53,6 @@ function App(props: any) {
   });
 
 
-  console.log("currentUser ", currentUser)
   return (
     
       <React.Fragment>
@@ -70,14 +75,27 @@ function App(props: any) {
 
                   <Route path="/home" element={<PrivateLayout currentUser={currentUser} />} >
                     <Route index element={
-                        <Home />
-                    } />
+                          <Home />
+                      } />
                   </Route>
                   <Route path="/profile" element={<PrivateLayout currentUser={currentUser} />} >
                     <Route index element={
                         <Profile />
                     } />
                   </Route>
+                  <Route path="/groups" element={<PrivateLayout currentUser={currentUser} />} >
+                    <Route index element={
+                      <Groups currentUser={currentUser}  />
+                    } />
+
+
+                    <Route path="new" element={<NewGroup currentUser={currentUser} />} />
+
+
+                  </Route>
+                     
+
+                     
 
 
                 </Routes>

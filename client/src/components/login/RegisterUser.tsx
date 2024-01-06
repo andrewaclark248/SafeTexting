@@ -8,6 +8,9 @@ import { useState } from 'react'
 //import { registerUser } from './../../utilities/Authentication'
 import auth from "./../../config/firebase";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { CreateUser } from './../../api/user'
+import { User } from "firebase/auth"
+
 
 function RegisterUser() {
     const [username, setUsername] = useState("");
@@ -17,7 +20,11 @@ function RegisterUser() {
     const signIn = async (e:any) => {
         e.preventDefault();
         try {
-        await createUserWithEmailAndPassword(auth, username, password);
+          //create user in fireabse
+          await createUserWithEmailAndPassword(auth, username, password);
+
+          //user in database
+          await CreateUser(auth.currentUser as User, username)
         } catch (err){
           console.error(err);
         }
