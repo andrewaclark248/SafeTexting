@@ -25,16 +25,11 @@ function GroupForm(props: any) {
 
 
     const handleClick = async () => {
-        console.log("about to start api request")
-        let result = await CreateGroup(props.currentUser, name)
-        console.log("hit api")
-        console.log("result", result)
-
-        let success = result.data.success
-
-        if (success) {
+        try {
+            await CreateGroup(props.currentUser, name)
             setMessage({show: true, text: "Successfully created your group!", severity: "success"})
-        } else {
+
+        } catch {
             setMessage({show: true, text: "Error creating group.", severity: "error"})
         }
     }
