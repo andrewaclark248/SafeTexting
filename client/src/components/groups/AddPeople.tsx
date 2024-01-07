@@ -6,7 +6,7 @@ import GroupsTable from './GroupTable'
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
-
+import AddPeopleTable from './AddPeopleTable'
 function AddPeople(props: any) {
 
        
@@ -19,13 +19,7 @@ function AddPeople(props: any) {
                     Add People To: 
                 </Typography>
             </Grid>
-
-            <Grid item xs={6}>
-                People In Group
-            </Grid>
-            <Grid item xs={6}>
-                People Not In Group
-            </Grid>
+            <AddPeopleTable />
 
         </Grid>
 

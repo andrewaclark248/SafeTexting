@@ -26,7 +26,6 @@ export default function GroupsTable(props: any) {
       setGroups(result.groups)
     }) 
   }, []);
-  console.log("groups = ", groups)
 
   return (
     <TableContainer component={Paper}>
