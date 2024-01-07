@@ -11,6 +11,7 @@ import Groups from './components/groups/Groups';
 import NewGroup from './components/groups/NewGroup'
 import People from './components/people/People';
 import NewPeople from './components/people/NewPeople';
+import AddPeople from './components/groups/AddPeople';
 
 import './api/axios'
 
@@ -93,6 +94,7 @@ function App(props: any) {
 
 
                     <Route path="new" element={<NewGroup currentUser={currentUser} />} />
+                    <Route path=":id/people" element={<AddPeople currentUser={currentUser} />} />
 
 
                   </Route>

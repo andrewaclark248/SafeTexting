@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 
 type Group = { 
   name: string
+  id: string
 }
 
 export default function GroupsTable(props: any) {
@@ -25,6 +26,7 @@ export default function GroupsTable(props: any) {
       setGroups(result.groups)
     }) 
   }, []);
+  console.log("groups = ", groups)
 
   return (
     <TableContainer component={Paper}>
@@ -32,7 +34,8 @@ export default function GroupsTable(props: any) {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>Edit</TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -44,10 +47,16 @@ export default function GroupsTable(props: any) {
               <TableCell component="th" scope="row">
                 <Link to="/groups/new" > 
                   <Button variant="contained">
-                      Edit
+                      Edit Group
                   </Button>
                 </Link>
-
+              </TableCell>
+              <TableCell component="th" scope="row">
+                <Link to={`/groups/${row.id}/people`} > 
+                  <Button variant="contained">
+                      Add People To Group
+                  </Button>
+                </Link>
               </TableCell>
             </TableRow>
           ))}
