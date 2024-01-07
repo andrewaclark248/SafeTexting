@@ -16,6 +16,7 @@ function RegisterUser() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [orgName, setOrgName] = useState("");
 
     const signIn = async (e:any) => {
         e.preventDefault();
@@ -24,7 +25,7 @@ function RegisterUser() {
           await createUserWithEmailAndPassword(auth, username, password);
 
           //user in database
-          await CreateUser(auth.currentUser as User, username)
+          await CreateUser(auth.currentUser as User, username, orgName)
         } catch (err){
           console.error(err);
         }
@@ -70,6 +71,17 @@ function RegisterUser() {
                 fullWidth 
                 onChange={(e) => {
                     setConfirmPassword(e.target.value)
+                }}
+                />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField 
+                id="outlined-basic" 
+                label="Organization Name" 
+                variant="outlined" 
+                fullWidth 
+                onChange={(e) => {
+                  setOrgName(e.target.value)
                 }}
                 />
             </Grid>

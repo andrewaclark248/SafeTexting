@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { User } from "firebase/auth"
 
-export async function CreateUser(currentUser: User, email: string) {
+export async function CreateUser(currentUser: User, email: string, orgName: string) {
 
     const token = await currentUser.getIdToken();
 
@@ -9,7 +9,8 @@ export async function CreateUser(currentUser: User, email: string) {
                                 method: 'post',
                                 url: '/api/users',
                                 data: {
-                                    email: email
+                                    email: email,
+                                    org_name: orgName
                                 },
                                 headers: {
                                     Authorization: 'Bearer ' + token

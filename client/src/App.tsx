@@ -6,9 +6,12 @@ import ResetPassword from './components/login/ResetPassword'
 import RegisterUser from './components/login/RegisterUser';
 import Loading from './components/shared/Loading'
 import Profile from './components/profile/Profile'
-import Home from './components/account/Home';
+import Home from './components/home/Home';
 import Groups from './components/groups/Groups';
 import NewGroup from './components/groups/NewGroup'
+import People from './components/people/People';
+import NewPeople from './components/people/NewPeople';
+
 import './api/axios'
 
 
@@ -90,6 +93,17 @@ function App(props: any) {
 
 
                     <Route path="new" element={<NewGroup currentUser={currentUser} />} />
+
+
+                  </Route>
+
+                  <Route path="/people" element={<PrivateLayout currentUser={currentUser} />} >
+                    <Route index element={
+                      <People currentUser={currentUser}  />
+                    } />
+
+
+                    <Route path="new" element={<NewPeople currentUser={currentUser} />} />
 
 
                   </Route>
