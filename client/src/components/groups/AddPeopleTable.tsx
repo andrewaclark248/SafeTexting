@@ -45,6 +45,12 @@ function AddPeopleTable(props: any) {
             return p.id != personId
         })
         //setPeopleInGroup(personRemovedFromGroup)
+        GetGroupPeople(props.currentUser, params.id).then((result) => {
+            setPeopleInGroup(result.people)
+        }) 
+        GetGroupPeople(props.currentUser, params.id, true).then((result) => {
+            setPeopleNotInGroup(result.people)
+        }) 
 
     }
 
@@ -56,6 +62,12 @@ function AddPeopleTable(props: any) {
         const personRemovedFromGroup = peopleInGroup.filter((p) => {
             return p.id != personId
         })
+        GetGroupPeople(props.currentUser, params.id).then((result) => {
+            setPeopleInGroup(result.people)
+        }) 
+        GetGroupPeople(props.currentUser, params.id, true).then((result) => {
+            setPeopleNotInGroup(result.people)
+        }) 
     }
 
     console.log("peopleInGroup = ", peopleInGroup)
