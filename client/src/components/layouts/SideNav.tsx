@@ -23,6 +23,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import GroupsIcon from '@mui/icons-material/Groups';
 import LoopIcon from '@mui/icons-material/Loop';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
 
 import Button from '@mui/material/Button';
 
@@ -163,7 +164,7 @@ export default function SideNav() {
           </IconButton>
         </DrawerHeader>
         <List >
-          {['MessageIcon', 'MailIcon', 'GroupsIcon', 'LoopIcon'].map((text, index) => (
+          {['MessageIcon', 'MailIcon', 'ContactPageIcon', 'GroupsIcon', 'LoopIcon'].map((text, index) => (
             <Link to={GetRoute(text)} key={index}> 
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
@@ -236,10 +237,12 @@ function GetIcon(text: string) {
     component = <MessageIcon sx={{color: "white" }} />
   } else if (text == "MailIcon") {
     component = <MailIcon sx={{color: "white" }} />
+  } else if (text == "ContactPageIcon") {
+    component = <ContactPageIcon sx={{color: "white" }} />
   } else if (text == "GroupsIcon") {
     component = <GroupsIcon sx={{color: "white" }} />
-  } else if (text == "LoopIcon") {
-    component = <LoopIcon sx={{color: "white" }} />
+  }  else if (text == "LoopIcon") {
+  component = <LoopIcon sx={{color: "white" }} />
   } else if (text == "ContactSupportIcon") {
     component = <ContactSupportIcon sx={{color: "white" }} />
   }
@@ -254,10 +257,12 @@ function GetRoute(text: string) {
     route = "/messages"
   } else if (text == "MailIcon") {
     route = "/mail"
-  } else if (text == "GroupsIcon") {
+  } else if (text == "ContactPageIcon") {
     route = "/groups"
+  } else if (text == "GroupsIcon") {
+    route = "/people"
   } else if (text == "LoopIcon") {
-    route = "/recurring-messages"
+  route = "/recurring-messages"
   } else if (text == "ContactSupportIcon") {
     route = "/support"
   }

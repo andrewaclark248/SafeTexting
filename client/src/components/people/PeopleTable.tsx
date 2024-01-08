@@ -7,55 +7,63 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { GetGroups } from './../../api/groups'
+import { GetPeople } from './../../api/people'
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 
 
-type Group = { 
-  name: string
-  id: string
+type People = { 
+  firstName: string
+  lastName: string
+  email: string
+  phoneNumber: string
 }
 
-export default function GroupsTable(props: any) {
-  const [groups, setGroups] = useState<Array<Group>>([])
+export default function PeopleTable(props: any) {
+  const [people, setPeople] = useState<Array<People>>([])
 
   useEffect(() => {
-    GetGroups(props.currentUser).then((result) => {
-      setGroups(result.groups)
+    GetPeople(props.currentUser).then((result) => {
+        setPeople(result.people)
     }) 
   }, []);
+
 
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
+            <TableCell>First Name</TableCell>
+            <TableCell>Last Name</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Phone Number</TableCell>
+            <TableCell>Edit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {groups.map((row) => (
-            <TableRow key={row.name}>
+          {people.map((row) => (
+            <TableRow key={row.firstName}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.firstName}
+              </TableCell>
+              <TableCell component="th" scope="row">
+                {row.lastName}
+              </TableCell>
+              <TableCell component="th" scope="row">
+                {row.email}
+              </TableCell>
+              <TableCell component="th" scope="row">
+                {row.phoneNumber}
               </TableCell>
               <TableCell component="th" scope="row">
                 <Link to="/groups/new" > 
                   <Button variant="contained">
-                      Edit Group
+                      Edit
                   </Button>
                 </Link>
-              </TableCell>
-              <TableCell component="th" scope="row">
-                <Link to={`/groups/${row.id}/people`} > 
-                  <Button variant="contained">
-                      Add People To Group
-                  </Button>
-                </Link>
+
               </TableCell>
             </TableRow>
           ))}
