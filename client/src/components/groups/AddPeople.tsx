@@ -19,7 +19,7 @@ function AddPeople(props: any) {
                     Add People To: 
                 </Typography>
             </Grid>
-            <AddPeopleTable />
+            <AddPeopleTable {...props} />
 
         </Grid>
 

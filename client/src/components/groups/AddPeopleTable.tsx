@@ -8,6 +8,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useEffect, useState } from 'react'
+import { GetGroupPeople } from '../../api/groupPeople'
+import { useParams } from 'react-router';
+
 
 type People = { 
     firstName: string
@@ -16,14 +19,24 @@ type People = {
     phoneNumber: string
   }
 
-function AddPeopleTable() {
+function AddPeopleTable(props: any) {
     const [peopleInGroup, setPeopleInGroup] = useState<Array<People>>([])
     const [peopleNotInGroup, setPeopleNotInGroup] = useState<Array<People>>([])
+    const params = useParams();
 
+    useEffect(() => {
+        GetGroupPeople(props.currentUser, params.id, true).then((result) => {
+            setPeopleNotInGroup(result.people)
+        }) 
+        GetGroupPeople(props.currentUser, params.id).then((result) => {
+            setPeopleInGroup(result.people)
+        }) 
+
+      }, []);
+    
 
     return (
         <>
-
             <Grid item xs={6}>
                 <Typography variant="h6" component="h2">
                     People In Group
@@ -55,11 +68,11 @@ function AddPeopleTable() {
                         </TableBody>
                     </Table>
                 </TableContainer>
-
-
             </Grid>
+
+
             <Grid item xs={6}>
-            <Typography variant="h6" component="h2">
+                <Typography variant="h6" component="h2">
                     People Not In Group
                 </Typography>
 
@@ -73,7 +86,7 @@ function AddPeopleTable() {
                         </TableRow>
                         </TableHead>
                         <TableBody>
-                        {peopleInGroup.map((row) => (
+                        {peopleNotInGroup.map((row) => (
                             <TableRow key={row.firstName}>
                                 <TableCell component="th" scope="row">
                                     {`${row.firstName} ${row.lastName}`}

@@ -25,12 +25,10 @@ export default function PeopleTable(props: any) {
 
   useEffect(() => {
     GetPeople(props.currentUser).then((result) => {
-        console.log("result = ", result.people)
         setPeople(result.people)
     }) 
   }, []);
 
-  console.log("people", people)
 
   return (
     <TableContainer component={Paper}>
