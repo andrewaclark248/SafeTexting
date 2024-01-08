@@ -10,13 +10,15 @@ import Paper from '@mui/material/Paper';
 import { useEffect, useState } from 'react'
 import { GetGroupPeople } from '../../api/groupPeople'
 import { useParams } from 'react-router';
-
+import Button from '@mui/material/Button';
+import { CreateGroupPeople, DeleteGroupPeople } from './../../api/groupPeople'
 
 type People = { 
     firstName: string
     lastName: string
     email: string
     phoneNumber: string
+    id: string
   }
 
 function AddPeopleTable(props: any) {
@@ -34,7 +36,30 @@ function AddPeopleTable(props: any) {
 
       }, []);
     
+    const addPersonToGroup = async (personId: string) => {
+        //call api
+        //update state variable
 
+        await CreateGroupPeople(props.currentUser, params.id, personId)
+        const personRemovedFromGroup = peopleInGroup.filter((p) => {
+            return p.id != personId
+        })
+        //setPeopleInGroup(personRemovedFromGroup)
+
+    }
+
+    const removePersonFromGroup = async (personId: string) => {
+        //call api
+        //update state variable
+
+        await DeleteGroupPeople(props.currentUser, params.id, personId)
+        const personRemovedFromGroup = peopleInGroup.filter((p) => {
+            return p.id != personId
+        })
+    }
+
+    console.log("peopleInGroup = ", peopleInGroup)
+    
     return (
         <>
             <Grid item xs={6}>
@@ -58,10 +83,9 @@ function AddPeopleTable(props: any) {
                                     {`${row.firstName} ${row.lastName}`}
                                 </TableCell>
                                 <TableCell component="th" scope="row">
-
-                                </TableCell>
-                                <TableCell component="th" scope="row">
-
+                                    <Button variant="contained" color="secondary" onClick={() => { removePersonFromGroup(row.id) }}>
+                                        Remove Person From Group
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         ))}
@@ -82,7 +106,6 @@ function AddPeopleTable(props: any) {
                         <TableRow>
                             <TableCell>Full Name</TableCell>
                             <TableCell></TableCell>
-                            <TableCell></TableCell>
                         </TableRow>
                         </TableHead>
                         <TableBody>
@@ -92,9 +115,9 @@ function AddPeopleTable(props: any) {
                                     {`${row.firstName} ${row.lastName}`}
                                 </TableCell>
                                 <TableCell component="th" scope="row">
-
-                                </TableCell>
-                                <TableCell component="th" scope="row">
+                                    <Button variant="contained" onClick={() => { addPersonToGroup(row.id) }}>
+                                        Add Person To Group
+                                    </Button>
 
                                 </TableCell>
                             </TableRow>

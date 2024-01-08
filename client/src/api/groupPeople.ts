@@ -1,27 +1,48 @@
 import axios from 'axios';
 import { User } from "firebase/auth"
 
-
-export async function CreateGroupPeople(currentUser: User, name: string) {
+export async function CreateGroupPeople(currentUser: User, groupId: string | undefined, personId: string) {
 
     const token = await currentUser.getIdToken();
 
     let result = await axios({
                                 method: 'post',
-                                url: '/api/groups',
+                                url: '/api/group_people',
                                 data: {
-                                    name: name
+                                    groupId: groupId,
+                                    personId: personId
                                 },
                                 headers: {
                                     Authorization: 'Bearer ' + token
                                 }
                             });
 
-    return result
+    return result.data
 
 
 } 
 
+
+export async function DeleteGroupPeople(currentUser: User, groupId: string | undefined, personId: string) {
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'delete',
+                                url: '/api/group_people',
+                                data: {
+                                    groupId: groupId,
+                                    personId: personId
+                                },
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
+
+
+} 
 
 
 
