@@ -12,6 +12,7 @@ import NewGroup from './components/groups/NewGroup'
 import People from './components/people/People';
 import NewPeople from './components/people/NewPeople';
 import AddPeople from './components/groups/AddPeople';
+import Plans from './components/subscription/Plans'
 
 import './api/axios'
 
@@ -108,6 +109,13 @@ function App(props: any) {
                     <Route path="new" element={<NewPeople currentUser={currentUser} />} />
 
 
+                  </Route>
+
+                  <Route path="/subscription" element={<PrivateLayout currentUser={currentUser} />} >
+                    <Route index element={
+                      <Plans currentUser={currentUser}  />
+                    } />
+                    <Route path="payment" element={<NewPeople currentUser={currentUser} />} />
                   </Route>
                      
 

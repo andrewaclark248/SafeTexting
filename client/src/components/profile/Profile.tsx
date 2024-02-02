@@ -2,6 +2,10 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import auth from "./../../config/firebase";
 import ResetPassword from './ResetPassword'
+import PhoneNumbers from './PhoneNumbers'
+import Subscription from './Subscription'
+
+
 
 function Profile(props: any) {
     const user = auth.currentUser?.email
@@ -15,11 +19,12 @@ function Profile(props: any) {
             </Typography>
         </Grid>
         <Grid item xs={6}>
-            <ResetPassword />
+          <ResetPassword />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
+          <Subscription />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={6}>
         </Grid>
       </Grid>
   
