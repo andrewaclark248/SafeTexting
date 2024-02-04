@@ -8,6 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Circle from '@mui/icons-material/Circle';
 import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
 
 
 
@@ -47,12 +48,17 @@ function Gold(props: any) {
                     </List>
 
                     </Grid>
-                    <Grid item xs={12}>
-                        <Button variant="contained" color="secondary">
-                            Purchase Gold
-                        </Button>
-                    </Grid>
+                    <Grid item xs={6}>
+                        <Link to="/subscription/numbers" > 
+                            <Grid item xs={12}>
+                                <Button variant="contained" color="secondary">
+                                    Purchase Gold
+                                </Button>
+                            </Grid>
+                        </Link>
                     
+                    </Grid>
+
                 </Grid>
             </CardContent>
         </Card>

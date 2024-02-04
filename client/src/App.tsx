@@ -13,6 +13,7 @@ import People from './components/people/People';
 import NewPeople from './components/people/NewPeople';
 import AddPeople from './components/groups/AddPeople';
 import Plans from './components/subscription/Plans'
+import Numbers from './components/subscription/Numbers'
 
 import './api/axios'
 
@@ -116,6 +117,7 @@ function App(props: any) {
                       <Plans currentUser={currentUser}  />
                     } />
                     <Route path="payment" element={<NewPeople currentUser={currentUser} />} />
+                    <Route path="numbers" element={<Numbers currentUser={currentUser} />} />
                   </Route>
                      
 
