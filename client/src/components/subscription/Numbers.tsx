@@ -12,9 +12,10 @@ import TextField from '@mui/material/TextField';
 import { useState, useEffect } from 'react'
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
-import { SearchPhones } from './../../api/phones';
+import { SearchPhones, CreatePhone } from './../../api/phones';
 import { useParams } from 'react-router';
 import Checkbox from '@mui/material/Checkbox';
+import { User } from "firebase/auth"
 
 function Numbers(props: any) {
     const [numbers, setNumbers] = useState<string[] | undefined>([]);
@@ -148,6 +149,13 @@ function Numbers(props: any) {
 
                     </Grid>
                     <Grid item xs={3}></Grid>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={6}>
+                        <Button variant="contained" color="secondary" onClick={() => { purchasePhoneNumbers(props.currentUser, selectedNumbers) }} fullWidth>
+                                            Purchase
+                        </Button>
+                    </Grid>
+                    <Grid item xs={3}></Grid>
 
                     
                 </Grid>
@@ -171,6 +179,12 @@ const disableCheckbox = (selectedNumbers: string[], number: string) => {
 
 }
 
+
+const  purchasePhoneNumbers = async (currentUser: User, selectedNumbers: string[]) => {
+
+    let result = await CreatePhone(currentUser, selectedNumbers);
+    console.log("result = ", result)
+}
 
   
   

@@ -23,3 +23,24 @@ export async function SearchPhones(currentUser: User, phoneNumber: string) {
 
 
 } 
+
+
+export async function CreatePhone(currentUser: User, phoneNumbers: string[]) {
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'post',
+                                url: '/api/phones',
+                                data: {
+                                    phoneNumbers: phoneNumbers
+                                },
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
+
+
+} 
