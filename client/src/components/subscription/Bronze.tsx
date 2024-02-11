@@ -49,7 +49,7 @@ function Bronze(props: any) {
 
                     </Grid>
                     <Grid item xs={12}>
-                        <Link to="/subscription/numbers" > 
+                        <Link to="/subscription/numbers/bronze" > 
                             <Grid item xs={12}>
                                 <Button variant="contained" color="secondary">
                                     Purchase Bronze

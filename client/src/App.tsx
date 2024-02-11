@@ -117,7 +117,7 @@ function App(props: any) {
                       <Plans currentUser={currentUser}  />
                     } />
                     <Route path="payment" element={<NewPeople currentUser={currentUser} />} />
-                    <Route path="numbers" element={<Numbers currentUser={currentUser} />} />
+                    <Route path="numbers/:plan" element={<Numbers currentUser={currentUser} />} />
                   </Route>
                      
 
