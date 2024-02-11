@@ -5,10 +5,25 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
-
-
+import { GetPhones } from './../../api/phones'
+import { useState, useEffect } from 'react'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Circle from '@mui/icons-material/Circle';
 
 function Subscription(props: any) {
+    const [phones, setPhones] = useState<string[] | undefined>([]);
+
+    useEffect(() => {
+        GetPhones(props.currentUser).then((data) => {
+            let numbers = data.numbers;
+            setPhones(numbers);
+        })
+    }, []);
+
+    console.log("numbers", phones)
 
     return (
         <Card variant="outlined" >
@@ -33,9 +48,20 @@ function Subscription(props: any) {
                         <Typography sx={{ fontSize: 12, fontWeight: "bold" }} color="text.primary" gutterBottom>
                             Phone Numbers
                         </Typography>
+                        <List>
+                        {phones?.map((phone) => {
 
-                        
-
+                            return (
+                                            
+                                                <ListItem key={phone}>
+                                                    <ListItemAvatar>
+                                                        <Circle />
+                                                    </ListItemAvatar>
+                                                    <ListItemText primary={phone} />
+                                                </ListItem>
+                            )
+                        })}
+                        </List>
                         <Button variant="contained">Get Phone #</Button>
 
                     </Grid>

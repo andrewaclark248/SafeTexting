@@ -86,7 +86,7 @@ function App(props: any) {
                   </Route>
                   <Route path="/profile" element={<PrivateLayout currentUser={currentUser} />} >
                     <Route index element={
-                        <Profile />
+                        <Profile currentUser={currentUser}  />
                     } />
                   </Route>
                   <Route path="/groups" element={<PrivateLayout currentUser={currentUser} />} >

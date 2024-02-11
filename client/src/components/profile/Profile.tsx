@@ -22,7 +22,7 @@ function Profile(props: any) {
           <ResetPassword />
         </Grid>
         <Grid item xs={6}>
-          <Subscription />
+          <Subscription {...props} />
         </Grid>
         <Grid item xs={6}>
         </Grid>

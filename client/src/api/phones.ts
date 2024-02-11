@@ -44,3 +44,21 @@ export async function CreatePhone(currentUser: User, phoneNumbers: string[]) {
 
 
 } 
+
+
+export async function GetPhones(currentUser: User) {
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'get',
+                                url: '/api/phones',
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
+
+
+} 
