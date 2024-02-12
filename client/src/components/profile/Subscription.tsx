@@ -52,13 +52,12 @@ function Subscription(props: any) {
                         {phones?.map((phone) => {
 
                             return (
-                                            
-                                                <ListItem key={phone}>
-                                                    <ListItemAvatar>
-                                                        <Circle />
-                                                    </ListItemAvatar>
-                                                    <ListItemText primary={phone} />
-                                                </ListItem>
+                                <ListItem key={phone}>
+                                    <ListItemAvatar>
+                                        <Circle />
+                                    </ListItemAvatar>
+                                    <ListItemText primary={phone} />
+                                </ListItem>
                             )
                         })}
                         </List>
