@@ -14,6 +14,7 @@ import NewPeople from './components/people/NewPeople';
 import AddPeople from './components/groups/AddPeople';
 import Plans from './components/subscription/Plans'
 import Numbers from './components/subscription/Numbers'
+import Messages from './components/messages/Messages'
 
 import './api/axios'
 
@@ -120,8 +121,12 @@ function App(props: any) {
                     <Route path="numbers/:plan" element={<Numbers currentUser={currentUser} />} />
                   </Route>
                      
-
-                     
+                  <Route path="/messages" element={<PrivateLayout currentUser={currentUser} />} >
+                    <Route index element={
+                      <Messages currentUser={currentUser}  />
+                    } />
+                  </Route>
+                   
 
 
                 </Routes>
