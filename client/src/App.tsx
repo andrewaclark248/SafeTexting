@@ -15,6 +15,7 @@ import AddPeople from './components/groups/AddPeople';
 import Plans from './components/subscription/Plans'
 import Numbers from './components/subscription/Numbers'
 import Messages from './components/messages/Messages'
+import NewMessage from './components/messages/NewMessage'
 
 import './api/axios'
 
@@ -125,6 +126,9 @@ function App(props: any) {
                     <Route index element={
                       <Messages currentUser={currentUser}  />
                     } />
+                    <Route path="new" element={<NewMessage currentUser={currentUser} />} />
+
+
                   </Route>
                    
 
