@@ -25,11 +25,12 @@ type Group = {
 const NewMessage = (props: any) => {
     const [type, setType] = useState<string>('');
 
-    const [groups, setGroups] = useState<Array<Group>>([])
+    const [groups, setGroups] = useState<Array<string>>([])
 
     useEffect(() => {
       GetGroups(props.currentUser).then((result) => {
-        setGroups(result.groups)
+        let groups = result.groups.map((group: Group) => group.name)
+        setGroups(groups)
       }) 
     }, []);
 
@@ -44,17 +45,17 @@ const NewMessage = (props: any) => {
             multiple
             id="tags-standard"
             options={groups}
-            getOptionLabel={(option) => <MenuItem/> as any }
+            getOptionLabel={(option) => option }
             defaultValue={[groups[0], groups[1]]}
             disableCloseOnSelect
             renderOption={(props, option, { selected }) => (
               <MenuItem
-                key={option.name}
-                value={option.name}
+                key={option}
+                value={option}
                 sx={{ justifyContent: "space-between" }}
                 {...props}
               >
-                {option.name}
+                {option}
                 {selected ? <CheckIcon color="info" /> : null}
               </MenuItem>
             )}
