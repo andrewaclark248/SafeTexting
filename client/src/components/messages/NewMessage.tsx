@@ -9,12 +9,16 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GetGroups } from './../../api/groups'
 
 import CheckIcon from "@mui/icons-material/Check";
 import CancelIcon from "@mui/icons-material/Cancel";
+
+import LiveTv from '@mui/icons-material/LiveTv';
+
+import Chip from '@mui/material/Chip';
 
 
 type Group = { 
@@ -24,8 +28,26 @@ type Group = {
 
 const NewMessage = (props: any) => {
     const [type, setType] = useState<string>('');
-
     const [groups, setGroups] = useState<Array<string>>([])
+    const [selectedGroups, setSelectedGroups] = useState<any>([])
+
+    const top100Films = [
+      { title: 'The Shawshank Redemption', name: 1994 },
+      { title: 'The Godfather', name: 1972 },
+      { title: 'The Godfather: Part II', name: 1974 },
+      { title: 'The Dark Knight', name: 2008 },
+      { title: '12 Angry Men', name: 1957 },
+      { title: "Schindler's List", name: 1993 },
+      { title: 'Pulp Fiction', name: 1994 },
+      {
+        title: 'The Lord of the Rings: The Return of the King',
+        name: 2003,
+      }
+    ]
+    const fixedOptions = [top100Films[6]];
+
+    const [value, setValue] = useState<Array<any>>([]);
+    const [value2, setValue2] = useState<Array<any>>([]);
 
     useEffect(() => {
       GetGroups(props.currentUser).then((result) => {
@@ -37,39 +59,45 @@ const NewMessage = (props: any) => {
     const handleChange = (event: SelectChangeEvent) => {
         setType(event.target.value as string);
     };
-    
-    const MultiAutocomplete = () => {
+
+
+
+
+      const FixedTags = () => {
+
+      
         return (
           <Autocomplete
-            sx={{ m: 1, width: 500 }}
             multiple
-            id="tags-standard"
-            options={groups}
-            getOptionLabel={(option) => option }
-            defaultValue={[groups[0], groups[1]]}
-            disableCloseOnSelect
-            renderOption={(props, option, { selected }) => (
-              <MenuItem
-                key={option}
-                value={option}
-                sx={{ justifyContent: "space-between" }}
-                {...props}
-              >
-                {option}
-                {selected ? <CheckIcon color="info" /> : null}
-              </MenuItem>
-            )}
+            fullWidth
+            id="fixed-options-demo"
+            value={value}
+            onChange={(event, newValue) => {
+              console.log("newvalue = ", newValue)
+              setValue([
+                ...newValue.filter((option) => fixedOptions.indexOf(option) === -1),
+              ]);
+            }}
+            options={top100Films}
+            getOptionLabel={(option) => option.title}
+            renderTags={(tagValue, getTagProps) =>
+              tagValue.map((option, index) => (
+                <Chip
+                  label={option.title}
+                  {...getTagProps({ index })}
+                />
+              ))
+            }
+            //style={{ width: 500 }}
             renderInput={(params) => (
-              <TextField
-                {...params}
-                variant="outlined"
-                label="Multiple Autocomplete"
-                placeholder="Favorites"
-              />
+              <TextField {...params} label="Fixed tag" placeholder="Movies" />
             )}
           />
         );
-      };
+      }
+    const movies = ["124", "2323", "asdfasdfsdf"]
+
+    console.log("value2 = ", value2)
 
     return (
         <Grid container spacing={4} >
@@ -105,7 +133,26 @@ const NewMessage = (props: any) => {
                             </FormControl>
                         </Grid>
                         <Grid item xs={12}>
-                          <MultiAutocomplete />
+
+                          <FixedTags />
+                          <Autocomplete
+                            multiple
+                            placeholder="Decorators"
+                            options={movies}
+                            value={value2}
+                            onChange={(event, newValue) => {
+                              console.log("newvalue = ", newValue)
+                              setValue2([
+                                ...newValue//.filter((option) => fixedOptions.indexOf(option) === -1),
+                              ]);
+                            }}
+
+                            //defaultValue={[movies[0]]}
+                            renderInput={(params) => (
+                              <TextField {...params} label="Fixed tag" placeholder="Movies" />
+                            )}
+
+                          />
                         </Grid>
                     </Grid>
                 </CardContent>
