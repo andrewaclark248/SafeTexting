@@ -30,23 +30,6 @@ const NewMessage = (props: any) => {
     const [type, setType] = useState<string>('');
     const [groups, setGroups] = useState<Array<string>>([])
     const [selectedGroups, setSelectedGroups] = useState<any>([])
-
-    const top100Films = [
-      { title: 'The Shawshank Redemption', name: 1994 },
-      { title: 'The Godfather', name: 1972 },
-      { title: 'The Godfather: Part II', name: 1974 },
-      { title: 'The Dark Knight', name: 2008 },
-      { title: '12 Angry Men', name: 1957 },
-      { title: "Schindler's List", name: 1993 },
-      { title: 'Pulp Fiction', name: 1994 },
-      {
-        title: 'The Lord of the Rings: The Return of the King',
-        name: 2003,
-      }
-    ]
-    const fixedOptions = [top100Films[6]];
-
-    const [value, setValue] = useState<Array<any>>([]);
     const [value2, setValue2] = useState<Array<any>>([]);
 
     useEffect(() => {
@@ -63,41 +46,7 @@ const NewMessage = (props: any) => {
 
 
 
-      const FixedTags = () => {
-
-      
-        return (
-          <Autocomplete
-            multiple
-            fullWidth
-            id="fixed-options-demo"
-            value={value}
-            onChange={(event, newValue) => {
-              console.log("newvalue = ", newValue)
-              setValue([
-                ...newValue.filter((option) => fixedOptions.indexOf(option) === -1),
-              ]);
-            }}
-            options={top100Films}
-            getOptionLabel={(option) => option.title}
-            renderTags={(tagValue, getTagProps) =>
-              tagValue.map((option, index) => (
-                <Chip
-                  label={option.title}
-                  {...getTagProps({ index })}
-                />
-              ))
-            }
-            //style={{ width: 500 }}
-            renderInput={(params) => (
-              <TextField {...params} label="Fixed tag" placeholder="Movies" />
-            )}
-          />
-        );
-      }
-    const movies = ["124", "2323", "asdfasdfsdf"]
-
-    console.log("value2 = ", value2)
+    console.log("selectedGroups = ", selectedGroups)
 
     return (
         <Grid container spacing={4} >
@@ -134,22 +83,21 @@ const NewMessage = (props: any) => {
                         </Grid>
                         <Grid item xs={12}>
 
-                          <FixedTags />
                           <Autocomplete
                             multiple
                             placeholder="Decorators"
-                            options={movies}
-                            value={value2}
+                            options={groups}
+                            value={selectedGroups}
                             onChange={(event, newValue) => {
                               console.log("newvalue = ", newValue)
-                              setValue2([
-                                ...newValue//.filter((option) => fixedOptions.indexOf(option) === -1),
+                              setSelectedGroups([
+                                ...newValue
                               ]);
                             }}
 
                             //defaultValue={[movies[0]]}
                             renderInput={(params) => (
-                              <TextField {...params} label="Fixed tag" placeholder="Movies" />
+                              <TextField {...params} label="Group" placeholder="Group" />
                             )}
 
                           />
