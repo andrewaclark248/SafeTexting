@@ -13,12 +13,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GetGroups } from './../../api/groups'
 
-import CheckIcon from "@mui/icons-material/Check";
-import CancelIcon from "@mui/icons-material/Cancel";
 
-import LiveTv from '@mui/icons-material/LiveTv';
-
-import Chip from '@mui/material/Chip';
 
 
 type Group = { 
@@ -102,14 +97,32 @@ const NewMessage = (props: any) => {
 
                           />
                         </Grid>
+                        <Grid item xs={12}>
+                          <TextField
+                            placeholder="Message"
+                            multiline
+                            fullWidth
+                            rows={2}
+                            maxRows={4}
+                          />
+                        </Grid>
+
                     </Grid>
                 </CardContent>
             </Card>
 
 
+          </Grid>
+          <Grid item xs={2}></Grid>
+          <Grid item xs={2}></Grid>
+          <Grid item xs={8}>
+            <Button variant="contained" color="secondary" fullWidth >
+              Send Message
+            </Button>
 
           </Grid>
           <Grid item xs={2}></Grid>
+
         </Grid>
 
 
