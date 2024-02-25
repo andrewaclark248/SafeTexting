@@ -12,8 +12,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState, useEffect, useMemo } from 'react'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GetGroups } from './../../api/groups'
-
-
+import { CreateMessage } from './../../api/message'
 
 
 type Group = { 
@@ -25,7 +24,8 @@ const NewMessage = (props: any) => {
     const [type, setType] = useState<string>('');
     const [groups, setGroups] = useState<Array<string>>([])
     const [selectedGroups, setSelectedGroups] = useState<any>([])
-    const [value2, setValue2] = useState<Array<any>>([]);
+    const [message, setMessage] = useState<string>("")
+    const [name, setName] = useState<string>("")
 
     useEffect(() => {
       GetGroups(props.currentUser).then((result) => {
@@ -34,14 +34,17 @@ const NewMessage = (props: any) => {
       }) 
     }, []);
 
-    const handleChange = (event: SelectChangeEvent) => {
+    const handleSetType = (event: SelectChangeEvent) => {
         setType(event.target.value as string);
     };
 
+    const sendMessage = async () => {
+      let result = await CreateMessage(props.currentUser, name, type, selectedGroups, message);
+      console.log("result ", result)
+    }
 
+    console.log("groups ", selectedGroups)
 
-
-    console.log("selectedGroups = ", selectedGroups)
 
     return (
         <Grid container spacing={4} >
@@ -58,7 +61,11 @@ const NewMessage = (props: any) => {
                 <CardContent>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <TextField id="outlined-basic" label="Name" variant="outlined" fullWidth />
+                            <TextField id="outlined-basic" label="Name" variant="outlined" fullWidth
+                              onChange={(e) => {
+                                setName(e.target.value);
+                              }}
+                            />
                         </Grid>
                         <Grid item xs={12}>
                             <FormControl fullWidth>
@@ -68,7 +75,7 @@ const NewMessage = (props: any) => {
                                     id="demo-simple-select"
                                     value={type}
                                     label="Type of Message"
-                                    onChange={handleChange}
+                                    onChange={handleSetType}
                                 >
                                     <MenuItem value={"Reply"}>Reply</MenuItem>
                                     <MenuItem value={"No-Reply"}>No-Reply</MenuItem>
@@ -104,6 +111,9 @@ const NewMessage = (props: any) => {
                             fullWidth
                             rows={2}
                             maxRows={4}
+                            onChange={(e) => {
+                              setMessage(e.target.value);
+                            }}
                           />
                         </Grid>
 
@@ -116,7 +126,7 @@ const NewMessage = (props: any) => {
           <Grid item xs={2}></Grid>
           <Grid item xs={2}></Grid>
           <Grid item xs={8}>
-            <Button variant="contained" color="secondary" fullWidth >
+            <Button variant="contained" color="secondary" fullWidth onClick={sendMessage}>
               Send Message
             </Button>
 
