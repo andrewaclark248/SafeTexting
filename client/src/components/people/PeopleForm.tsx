@@ -5,7 +5,8 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import { CreatePeople } from './../../api/people'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import MuiPhoneNumber from 'mui-phone-number';
 
 type Message = {
     show: boolean | null
@@ -29,6 +30,7 @@ function PeopleForm(props: any) {
 
     const handleClick = async () => {
         try {
+
             await CreatePeople(props.currentUser, firstName, lastName, phoneNumber, email)
             setMessage({show: true, text: "Successfully created your person!", severity: "success"})
 
@@ -36,6 +38,8 @@ function PeopleForm(props: any) {
             setMessage({show: true, text: "Error creating person.", severity: "error"})
         }
     }
+
+    console.log("phoneNumber = ", phoneNumber)
 
     return (
         <>
@@ -64,10 +68,19 @@ function PeopleForm(props: any) {
                         />
                     </Grid>
 
+
                     <Grid item xs={12}>
-                        <TextField fullWidth id="outlined-basic" label="Phone Number" variant="outlined"
-                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPhoneNumber(event.target.value)}
+                        <MuiPhoneNumber
+                            fullWidth
+                            label="Phone Number" 
+                            variant="outlined"
+                            defaultCountry={'us'}
+                            onlyCountries={['us']}
+                            disableDropdown={true}
+                            onChange={(number: any)=> { setPhoneNumber(number) }}
                         />
+
+
                     </Grid>
 
 
@@ -86,5 +99,7 @@ function PeopleForm(props: any) {
         </>
     )
 }
+
+//setPhoneNumber(event.target.value)
 
 export default PeopleForm;
