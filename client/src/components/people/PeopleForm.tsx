@@ -30,9 +30,15 @@ function PeopleForm(props: any) {
 
     const handleClick = async () => {
         try {
+            // must have first or last name
+            // must have email or phone number
+            if ((firstName.length == 0 || lastName.length == 0) && (email.length == 0 || phoneNumber.length == 0) ) {
+                setMessage({show: true, text: "Must have First or Last Name & Phone Number or Email.", severity: "error"})
+            } else {
+                await CreatePeople(props.currentUser, firstName, lastName, phoneNumber, email)
+                setMessage({show: true, text: "Successfully created your person!", severity: "success"})
+            }
 
-            await CreatePeople(props.currentUser, firstName, lastName, phoneNumber, email)
-            setMessage({show: true, text: "Successfully created your person!", severity: "success"})
 
         } catch {
             setMessage({show: true, text: "Error creating person.", severity: "error"})
@@ -79,10 +85,7 @@ function PeopleForm(props: any) {
                             disableDropdown={true}
                             onChange={(number: any)=> { setPhoneNumber(number) }}
                         />
-
-
                     </Grid>
-
 
                     <Grid item xs={12}>
                         <Button variant="contained" color="secondary" onClick={handleClick}>

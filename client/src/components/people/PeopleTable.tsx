@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,9 +10,12 @@ import { GetPeople } from './../../api/people'
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
+import DeletePerson from './DeletePerson'
+import Modal from '@mui/material/Modal';
 
 
 type People = { 
+  id: string
   firstName: string
   lastName: string
   email: string
@@ -40,6 +42,7 @@ export default function PeopleTable(props: any) {
             <TableCell>Email</TableCell>
             <TableCell>Phone Number</TableCell>
             <TableCell>Edit</TableCell>
+            <TableCell>Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -63,7 +66,9 @@ export default function PeopleTable(props: any) {
                       Edit
                   </Button>
                 </Link>
-
+              </TableCell>
+              <TableCell component="th" scope="row">
+                <DeletePerson people={row} {...props} />
               </TableCell>
             </TableRow>
           ))}
