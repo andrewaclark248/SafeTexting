@@ -45,7 +45,6 @@ function PeopleForm(props: any) {
         }
     }
 
-    console.log("phoneNumber = ", phoneNumber)
 
     return (
         <>

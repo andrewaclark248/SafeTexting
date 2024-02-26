@@ -9,6 +9,7 @@ import { User } from "firebase/auth"
 import {useEffect} from 'react'
 import NavBar from './NavBar'
 import SideNav from './SideNav'
+import { useSelector } from 'react-redux';
 
 interface Props {
   children?: React.ReactNode

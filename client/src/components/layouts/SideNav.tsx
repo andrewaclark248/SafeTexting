@@ -36,6 +36,13 @@ import { Link } from "react-router-dom";
 import { Outlet } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 
+import { useSelector } from 'react-redux';
+
+import Alert from '@mui/material/Alert';
+
+import CheckIcon from '@mui/icons-material/Check';
+
+
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -111,6 +118,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function SideNav() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const alert = useSelector((state: any) => state.alert);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -151,6 +159,7 @@ export default function SideNav() {
           </Grid>
         </Toolbar>
       </AppBar>
+
       <Drawer variant="permanent" open={open}  
             PaperProps={{
                 sx: {
@@ -219,8 +228,18 @@ export default function SideNav() {
           ))}
         </List>
       </Drawer>
+
+      
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Grid container spacing={0} sx={{ mt: 10 }} >
+            {alert.show && 
+              <Alert icon={<CheckIcon fontSize="inherit" />} severity="success" style={{
+                width:'100%',
+              }} >
+                {alert.message}
+              </Alert>
+            }
+
           <Outlet/>
         </Grid>
         <DrawerHeader />

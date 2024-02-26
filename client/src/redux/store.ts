@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './reducers/AuthUser';
+import alertReducer from './reducers/Alert';
 
 /*******
 
@@ -23,7 +24,7 @@ const store = configureStore({
 
 export default configureStore({
   reducer: {
-    auth: authReducer,
+    alert: alertReducer,
   },
 });
 

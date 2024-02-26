@@ -7,6 +7,8 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import { DeletePeople } from './../../api/people'
 import Alert from '@mui/material/Alert';
+import { useDispatch } from 'react-redux';
+import { showMessage } from './../../redux/reducers/Alert';
 
 
 type Message = {
@@ -27,6 +29,7 @@ const DeletePerson = (props: any) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     let [message, setMessage] = useState(createMessage);
+    const dispatch = useDispatch();
 
     const style = {
       position: 'absolute' as 'absolute',
@@ -44,10 +47,9 @@ const DeletePerson = (props: any) => {
       if (destroy) {
         try {
           let result = await DeletePeople(props.currentUser, props.people)
-          setMessage({show: true, text: "Successfully deleted person.", severity: "success"})
-  
+          handleClose()
+          dispatch(showMessage({text: "Successfully deleted person.", severity: "success"}));
         } catch {
-          setMessage({show: true, text: "Error creating person.", severity: "error"})
   
         }
       }
@@ -77,7 +79,7 @@ const DeletePerson = (props: any) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                <Button onClick={() => handleDelete(false)} variant="contained" fullWidth>No</Button>
+                <Button onClick={handleClose} variant="contained" fullWidth>No</Button>
 
                 </Grid>
                 <Grid item xs={6}>

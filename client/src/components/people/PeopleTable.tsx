@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import DeletePerson from './DeletePerson'
 import Modal from '@mui/material/Modal';
+import { useSelector } from 'react-redux';
 
 
 type People = { 
@@ -24,12 +25,13 @@ type People = {
 
 export default function PeopleTable(props: any) {
   const [people, setPeople] = useState<Array<People>>([])
+  const alert = useSelector((state: any) => state.alert);
 
   useEffect(() => {
     GetPeople(props.currentUser).then((result) => {
         setPeople(result.people)
     }) 
-  }, []);
+  }, [alert]);
 
 
   return (
