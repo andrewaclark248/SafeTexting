@@ -42,6 +42,10 @@ import Alert from '@mui/material/Alert';
 
 import CheckIcon from '@mui/icons-material/Check';
 
+import { hideMessage } from './../../redux/reducers/Alert'
+
+import { useDispatch } from 'react-redux';
+
 
 const drawerWidth = 240;
 
@@ -119,6 +123,7 @@ export default function SideNav() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const alert = useSelector((state: any) => state.alert);
+  const dispatch = useDispatch();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,6 +132,12 @@ export default function SideNav() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const clostAlert = () => {
+    dispatch(hideMessage(""));
+
+  }
+  
 
 
   return (
@@ -233,9 +244,12 @@ export default function SideNav() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Grid container spacing={0} sx={{ mt: 10 }} >
             {alert.show && 
-              <Alert icon={<CheckIcon fontSize="inherit" />} severity="success" style={{
-                width:'100%',
-              }} >
+              <Alert 
+                icon={<CheckIcon fontSize="inherit" />}
+                severity="success"
+                style={{ width:'100%',}} 
+                onClose={clostAlert}
+                >
                 {alert.message}
               </Alert>
             }
@@ -247,6 +261,7 @@ export default function SideNav() {
     </Box>
   );
 }
+
 
 function GetIcon(text: string) {
   let component = null;
