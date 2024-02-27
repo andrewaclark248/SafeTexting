@@ -59,3 +59,50 @@ export async function DeletePeople(currentUser: User, people: any) {
 
 
 } 
+
+
+
+export async function show(currentUser: User, personId: any) {
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'get',
+                                url: `/api/peoples/${personId}`,
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
+
+
+} 
+
+
+
+export async function update(currentUser: User, personId: string, firstName: string, lastName: string, phoneNumber: string, email: string) {
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'put',
+                                url: `/api/peoples/${personId}`,
+                                data: {
+                                    firstName: firstName,
+                                    lastName: lastName,
+                                    phoneNumber: phoneNumber,
+                                    email: email
+
+                                },
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
+
+
+} 
+
+

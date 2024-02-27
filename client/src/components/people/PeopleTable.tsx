@@ -63,7 +63,7 @@ export default function PeopleTable(props: any) {
                 {row.phoneNumber}
               </TableCell>
               <TableCell component="th" scope="row">
-                <Link to="/groups/new" > 
+                <Link to={`/people/edit/${row.id}`} > 
                   <Button variant="contained">
                       Edit
                   </Button>
