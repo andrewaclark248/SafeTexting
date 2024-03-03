@@ -11,7 +11,7 @@ import { GetGroups } from './../../api/groups'
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-
+import DeleteGroup from './DeleteGroup'
 
 type Group = { 
   name: string
@@ -56,6 +56,9 @@ export default function GroupsTable(props: any) {
                       Add People To Group
                   </Button>
                 </Link>
+              </TableCell>
+              <TableCell component="th" scope="row">
+                <DeleteGroup group={row} {...props} />
               </TableCell>
             </TableRow>
           ))}

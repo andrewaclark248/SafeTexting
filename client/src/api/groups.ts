@@ -43,3 +43,24 @@ export async function GetGroups(currentUser: User) {
 
 
 } 
+
+
+
+
+export async function DeleteGroup(currentUser: User, group: any) {
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'delete',
+                                url: `/api/groups/${group.id}`,
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
+
+
+
+} 
