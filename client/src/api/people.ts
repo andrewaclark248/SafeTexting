@@ -48,7 +48,7 @@ export async function DeletePeople(currentUser: User, people: any) {
     const token = await currentUser.getIdToken();
 
     let result = await axios({
-                                method: 'get',
+                                method: 'delete',
                                 url: `/api/peoples/${people.id}`,
                                 headers: {
                                     Authorization: 'Bearer ' + token
