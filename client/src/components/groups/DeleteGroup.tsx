@@ -46,6 +46,7 @@ const DeleteGroup = (props: any) => {
     const handleDelete = async (destroy: boolean) => {
       if (destroy) {
         try {
+          console.log("delete group", props.group)
           let result = await DeleteGroupApi(props.currentUser, props.group)
           handleClose()
           dispatch(showMessage({text: "Successfully deleted group.", severity: "success"}));

@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import DeleteGroup from './DeleteGroup'
+import { useSelector } from 'react-redux';
 
 type Group = { 
   name: string
@@ -20,12 +21,13 @@ type Group = {
 
 export default function GroupsTable(props: any) {
   const [groups, setGroups] = useState<Array<Group>>([])
+  const alert = useSelector((state: any) => state.alert);
 
   useEffect(() => {
     GetGroups(props.currentUser).then((result) => {
       setGroups(result.groups)
     }) 
-  }, []);
+  }, [alert]);
 
   return (
     <TableContainer component={Paper}>
@@ -44,7 +46,7 @@ export default function GroupsTable(props: any) {
                 {row.name}
               </TableCell>
               <TableCell component="th" scope="row">
-                <Link to="/groups/new" > 
+                <Link to={`/groups/edit/${row.id}`} > 
                   <Button variant="contained">
                       Edit Group
                   </Button>

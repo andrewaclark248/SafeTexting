@@ -9,6 +9,7 @@ import Profile from './components/profile/Profile'
 import Home from './components/home/Home';
 import Groups from './components/groups/Groups';
 import NewGroup from './components/groups/NewGroup'
+import EditGroup from './components/groups/EditGroup'
 import People from './components/people/People';
 import NewPeople from './components/people/NewPeople';
 import EditPerson from './components/people/EditPerson';
@@ -102,6 +103,7 @@ function App(props: any) {
 
                     <Route path="new" element={<NewGroup currentUser={currentUser} />} />
                     <Route path=":id/people" element={<AddPeople currentUser={currentUser} />} />
+                    <Route path="edit/:id" element={<EditGroup currentUser={currentUser} />} />
 
 
                   </Route>

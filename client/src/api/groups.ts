@@ -64,3 +64,47 @@ export async function DeleteGroup(currentUser: User, group: any) {
 
 
 } 
+
+
+export async function UpdateGroup(currentUser: User, groupId: any, name: string) {
+
+
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'put',
+                                url: `/api/groups/${groupId}`,
+                                data: {
+                                    name: name
+                                },
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
+
+
+
+} 
+
+
+
+
+export async function GetGroup(currentUser: User, groupId: any) {
+
+    const token = await currentUser.getIdToken();
+
+    let result = await axios({
+                                method: 'get',
+                                url: `/api/groups/${groupId}`,
+                                headers: {
+                                    Authorization: 'Bearer ' + token
+                                }
+                            });
+
+    return result.data
+
+
+} 
